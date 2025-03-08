@@ -1,18 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Початкові значення
-    let maxValue = 100; // Скільки потрібно
-    let currentValue = 30; // Скільки зібрано
+    let logBox = document.createElement("div");
+    logBox.style.position = "fixed";
+    logBox.style.bottom = "10px";
+    logBox.style.left = "10px";
+    logBox.style.backgroundColor = "white";
+    logBox.style.padding = "10px";
+    logBox.style.border = "1px solid black";
+    logBox.style.zIndex = "1000";
+    document.body.appendChild(logBox);
 
-    // Оновлення чисел
+    function log(message) {
+        logBox.innerHTML += message + "<br>";
+    }
+
+    log("Скрипт запущено!");
+
+    let maxValue = 100;
+    let currentValue = 30;
+
+    log("Максимальне: " + maxValue);
+    log("Зібране: " + currentValue);
+
     document.getElementById("collected").innerText = currentValue;
     document.getElementById("needed").innerText = maxValue;
 
-    // Функція оновлення шкали
     function updateProgress() {
         let progress = (currentValue / maxValue) * 100;
         document.getElementById("progress").style.height = progress + "%";
+        log("Оновлено шкалу: " + progress + "%");
     }
 
-    // Запускаємо оновлення
     updateProgress();
 });
