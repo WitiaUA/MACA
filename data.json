@@ -1,4 +1,4 @@
 {
-    "maxValue": 3000, //Максимальне значення 
-    "currentValue": 30 //Поточне значення
+    "maxValue": 3000,
+    "currentValue": 30
 }
