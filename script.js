@@ -28,7 +28,7 @@ function updateProgress() {
     let progress = (currentValue / maxValue) * 100;
     console.log("Оновлення шкали: " + progress + "%"); // Додати перевірку
     progressElement.style.height = progress + "%";
-    progressElement.style.backgroundColor = "#c8a400";
+    progressElement.style.backgroundColor = "white";
 
 }
 
