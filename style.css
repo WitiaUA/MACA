@@ -18,6 +18,9 @@ body {
     border: 2px solid black;
     position: relative;
     overflow: hidden;
+    border: 2px solid red !important;
+}
+
 }
 
 .progress-fill {
