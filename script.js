@@ -26,9 +26,9 @@ neededElement.innerText = maxValue;
 
 function updateProgress() {
     let progress = (currentValue / maxValue) * 100;
+    console.log("Оновлення шкали: " + progress + "%"); // Додати перевірку
     progressElement.style.height = progress + "%";
-    progressElement.style.backgroundColor = "green"; // Робимо смугу видимою
-    log("✅ Оновлено шкалу: " + progress + "%");
+    progressElement.style.backgroundColor = "green";
 }
 
 updateProgress();
