@@ -1,40 +1,33 @@
-/* Загальний стиль сторінки */
 body {
-    display: flex;
-    justify-content: center; /* Вирівнювання по горизонталі */
-    align-items: center; /* Вирівнювання по вертикалі */
-    height: 100vh; /* Вся висота екрану */
-    background-color: #f8f8f8; /* Світлий фон */
-    font-family: Arial, sans-serif; /* Стандартний шрифт */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
 }
 
-/* Контейнер шкали */
-#progress-container {
-    width: 50px; /* Ширина шкали */
-    height: 300px; /* Висота шкали */
-    background-color: white; /* Білий фон шкали */
-    border: 2px solid #ccc; /* Легка сіра рамка */
-    border-radius: 5px; /* Закруглені кути */
+.progress-container {
+    margin: 50px auto;
+    width: 200px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    border: 2px solid black;
     position: relative;
     overflow: hidden;
 }
 
-/* Смуга прогресу */
-#progress {
-    width: 100%; /* Ширина завжди 100% */
-    height: 0%; /* Початкове значення */
-    background-color: #d8a128; /* Основний золотий колір */
-    border: 1px solid #b88c1d; /* Темна обводка */
-    box-shadow: 0 0 5px #ffcc00; /* Легке світіння */
+.progress-fill {
+    width: 100%;
+    height: 0;
+    background-color: #d4af37; /* Золотий колір */
     position: absolute;
-    bottom: 0; /* Починається знизу */
-    transition: height 0.5s ease-in-out; /* Плавне заповнення */
+    bottom: 0;
+    transition: height 0.5s ease-in-out;
 }
 
-/* Текст над шкалою */
 #progress-text {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
     margin-top: 10px;
+    font-size: 18px;
 }
