@@ -5,12 +5,7 @@ body {
 }
 
 .progress-container {
-    width: 200px;
-    height: 400px;
-    border: 2px solid black;
-    margin: 50px auto;
-    background-color: white;
-    position: relative;
+    border: 2px solid red;
 }
 
 .progress-bar {
