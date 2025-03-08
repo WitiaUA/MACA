@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
     progressElement.style.height = progress + "%";
     progressElement.style.backgroundColor = "#d4af37"; // Робимо смугу видимою
     }
-
+console.log("JS підключений");
+console.log(document.getElementById("progress"));
     fetchData();
     setInterval(fetchData, 5000); // Оновлення кожні 5 секунд
 });
