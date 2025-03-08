@@ -1,3 +1,13 @@
+/* Загальний стиль сторінки */
+body {
+    display: flex;
+    justify-content: center; /* Вирівнювання по горизонталі */
+    align-items: center; /* Вирівнювання по вертикалі */
+    height: 100vh; /* Вся висота екрану */
+    background-color: #f8f8f8; /* Світлий фон */
+    font-family: Arial, sans-serif; /* Стандартний шрифт */
+}
+
 /* Контейнер шкали */
 #progress-container {
     width: 50px; /* Ширина шкали */
@@ -14,11 +24,11 @@
     width: 100%; /* Ширина завжди 100% */
     height: 0%; /* Початкове значення */
     background-color: #d8a128; /* Основний золотий колір */
-    border: 1px solid #b88c1d; /* Темна обводка для контрасту */
+    border: 1px solid #b88c1d; /* Темна обводка */
     box-shadow: 0 0 5px #ffcc00; /* Легке світіння */
     position: absolute;
     bottom: 0; /* Починається знизу */
-    transition: height 0.5s ease-in-out; /* Плавна анімація */
+    transition: height 0.5s ease-in-out; /* Плавне заповнення */
 }
 
 /* Текст над шкалою */
