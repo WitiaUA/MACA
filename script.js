@@ -18,16 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let maxValue = 100;
     let currentValue = 30;
 
-    log("Максимальне: " + maxValue);
-    log("Зібране: " + currentValue);
+    log("Максимальне значення: " + maxValue);
+    log("Зібране значення: " + currentValue);
 
-    document.getElementById("collected").innerText = currentValue;
-    document.getElementById("needed").innerText = maxValue;
+    let collectedElement = document.getElementById("collected");
+    let neededElement = document.getElementById("needed");
+    let progressElement = document.getElementById("progress");
+
+    if (!collectedElement || !neededElement || !progressElement) {
+        log("❌ Помилка: не знайдено один з елементів шкали!");
+        return;
+    }
+
+    collectedElement.innerText = currentValue;
+    neededElement.innerText = maxValue;
 
     function updateProgress() {
         let progress = (currentValue / maxValue) * 100;
-        document.getElementById("progress").style.height = progress + "%";
-        log("Оновлено шкалу: " + progress + "%");
+        progressElement.style.height = progress + "%";
+        progressElement.style.backgroundColor = "green"; // Робимо смугу видимою
+        log("✅ Оновлено шкалу: " + progress + "%");
     }
 
     updateProgress();
