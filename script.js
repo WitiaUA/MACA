@@ -7,16 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateProgress(value) {
-        let maxValue = 100;
-        let progressElement = document.getElementById("progress");
-        let collectedElement = document.getElementById("collected");
-        let neededElement = document.getElementById("needed");
+    let maxValue = 100;
+    let progressElement = document.getElementById("progress");
 
-        collectedElement.innerText = value;
-        neededElement.innerText = maxValue;
-
-        let progress = (value / maxValue) * 100;
-        progressElement.style.height = progress + "%";
+    let progress = (value / maxValue) * 100;
+    progressElement.style.height = progress + "%";
+    progressElement.style.backgroundColor = "#d4af37"; // Робимо смугу видимою
     }
 
     fetchData();
