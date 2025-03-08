@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Прогрес</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Вертикальна шкала прогресу</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress"></div>
+        <div class="progress-bar" id="progress"></div>
+        <div class="progress-text">
+            <p id="collected">0</p>
+            <p>/</p>
+            <p id="needed">100</p>
         </div>
-        <p id="progress-text">Зібрано: <span id="collected">0</span> / <span id="needed">100</span></p>
     </div>
 
     <script src="script.js"></script>
