@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let maxValue = 100;
-    let currentValue = 30; // Тестове значення
+    let currentValue = 30;
 
     let progressElement = document.getElementById("progress");
     let progressText = document.getElementById("progress-text");
