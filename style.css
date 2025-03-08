@@ -39,3 +39,13 @@ body {
     color: black;
     text-align: center;
 }
+#progress-container {
+    background-color: white; /* Фон шкали */
+    border: 2px solid #ccc; /* Легка рамка */
+}
+
+#progress {
+    background-color: #d8a128; /* Золотий колір */
+    border: 1px solid #b88c1d; /* Темніший відтінок */
+    box-shadow: 0 0 5px #ffcc00; /* Легке світіння */
+}
