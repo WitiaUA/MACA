@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    function log(message) {} // Порожня функція, яка нічого не робить
-
     let maxValue = 100;
     let currentValue = 30;
 
