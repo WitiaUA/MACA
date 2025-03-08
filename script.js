@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         progressElement.style.height = progress + "%";
         progressElement.style.backgroundColor = "green";
     }
-
+<link rel="stylesheet" href="style.css?v=123">
+<script src="script.js?v=123"></script>
     updateProgress();
 });
