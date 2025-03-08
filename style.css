@@ -1,33 +1,41 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
     background-color: #f4f4f4;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .progress-container {
-    margin: 50px auto;
-    width: 200px;
+    width: 80px; /* Ширина шкали */
+    height: 300px; /* Висота шкали */
+    background-color: #ddd;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .progress-bar {
     width: 100%;
-    height: 300px;
-    background-color: white;
-    border: 2px solid black;
-    position: relative;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 100%;
-    height: 0;
-    background-color: #d4af37; /* Золотий колір */
+    height: 0%;
+    background-color: #4caf50;
     position: absolute;
     bottom: 0;
     transition: height 0.5s ease-in-out;
 }
 
-#progress-text {
-    margin-top: 10px;
-    font-size: 18px;
+.progress-text {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
 }
