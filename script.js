@@ -20,5 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 <link rel="stylesheet" href="style.css?v=123">
 <script src="script.js?v=123"></script>
+<script>
+    let script = document.createElement("script");
+    script.src = "script.js?v=" + Date.now();
+    document.head.appendChild(script);
+</script>
     updateProgress();
 });
