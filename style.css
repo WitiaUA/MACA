@@ -27,6 +27,8 @@ body {
     position: absolute;
     bottom: 0;
     transition: height 0.5s ease-in-out;
+    background-color: red !important;
+
 }
 
 #progress-text {
