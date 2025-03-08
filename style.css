@@ -1,11 +1,29 @@
 body {
-    
     text-align: center;
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column; /* Додаємо вертикальне вирівнювання */
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px; /* Між заголовком і шкалою */
+}
+
+.header-image {
+    width: 100px; /* Ширина картинки */
+    height: auto; /* Автоматична висота, зберігаючи пропорції */
+    margin-bottom: 10px; /* Відстань між зображенням і заголовком */
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333; /* Колір тексту заголовка */
+    margin: 0;
 }
 
 .progress-container {
