@@ -1,16 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let logBox = document.createElement("div");
-    logBox.style.position = "fixed";
-    logBox.style.bottom = "10px";
-    logBox.style.left = "10px";
-    logBox.style.backgroundColor = "white";
-    logBox.style.padding = "10px";
-    logBox.style.border = "1px solid black";
-    logBox.style.zIndex = "1000";
-    document.body.appendChild(logBox);
+    let debugMode = false; // Змінюй на `true`, якщо треба бачити логи
 
-    function log(message) {
-        logBox.innerHTML += message + "<br>";
+    if (debugMode) {
+        let logBox = document.createElement("div");
+        logBox.style.position = "fixed";
+        logBox.style.bottom = "10px";
+        logBox.style.left = "10px";
+        logBox.style.backgroundColor = "white";
+        logBox.style.padding = "10px";
+        logBox.style.border = "1px solid black";
+        logBox.style.zIndex = "1000";
+        document.body.appendChild(logBox);
+
+        function log(message) {
+            logBox.innerHTML += message + "<br>";
+        }
+    } else {
+        function log(message) {} // Порожня функція, яка нічого не робить
     }
 
     log("Скрипт запущено!");
