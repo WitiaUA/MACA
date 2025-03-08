@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let maxValue = 100;
-    let currentValue = 30;
+    let currentValue = 0;
 
     let collectedElement = document.getElementById("collected");
     let neededElement = document.getElementById("needed");
