@@ -16,6 +16,8 @@ body {
     border: 2px solid black;
     position: relative;
     overflow: hidden;
+    border: 5px solid red; /* Тимчасово зробимо рамку червоною */
+}
 }
 
 .progress-fill {
