@@ -16,22 +16,22 @@ let collectedElement = document.getElementById("collected");
 let neededElement = document.getElementById("needed");
 let progressElement = document.getElementById("progress");
 
-if (!collectedElement || !neededElement || !progressElement) {
+/*if (!collectedElement || !neededElement || !progressElement) {
     log("❌ Помилка: не знайдено один з елементів шкали!");
     return;
 }
-
+*/
 collectedElement.innerText = currentValue;
 neededElement.innerText = maxValue;
 
-/*function updateProgress() {
+function updateProgress() {
     let progress = (currentValue / maxValue) * 100;
     console.log("Оновлення шкали: " + progress + "%"); // Додати перевірку
     progressElement.style.height = progress + "%";
     progressElement.style.backgroundColor = "white";
 
 }
-*/
+
 updateProgress();
 
 });
