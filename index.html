@@ -3,50 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Прогрес збору</title>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
-    <style>
-        .progress-container { width: 100%; background: #ddd; border-radius: 5px; }
-        .progress-bar { height: 30px; background: #4CAF50; width: 0%; text-align: center; line-height: 30px; color: white; }
-    </style>
+    <title>Вертикальна шкала прогресу</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Прогрес збору</h1>
-    <p>Мета: <span id="goal">0</span></p>
-    <p>Зібрано: <span id="collected">0</span></p>
     <div class="progress-container">
-        <div id="progress-bar" class="progress-bar">0%</div>
+        <div class="progress-bar" id="progress"></div>
     </div>
 
-    <script>
-        // Налаштування Firebase (замінити на свої дані)
-        const firebaseConfig = {
-            apiKey: "ТВОЙ_API_KEY",
-            authDomain: "ТВОЙ_PROJECT_ID.firebaseapp.com",
-            databaseURL: "https://ТВОЙ_PROJECT_ID.firebaseio.com",
-            projectId: "ТВОЙ_PROJECT_ID",
-            storageBucket: "ТВОЙ_PROJECT_ID.appspot.com",
-            messagingSenderId: "ТВОЙ_MESSAGING_ID",
-            appId: "ТВОЙ_APP_ID"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
-
-        function updateProgress(snapshot) {
-            const data = snapshot.val();
-            document.getElementById("goal").textContent = data.goal;
-            document.getElementById("collected").textContent = data.collected;
-
-            let progressPercent = (data.collected / data.goal) * 100;
-            document.getElementById("progress-bar").style.width = progressPercent + "%";
-            document.getElementById("progress-bar").textContent = Math.round(progressPercent) + "%";
-        }
-
-        db.ref("progress").on("value", updateProgress);
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
