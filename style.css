@@ -11,7 +11,7 @@ body {
 .progress-container {
     width: 80px; /* Ширина шкали */
     height: 300px; /* Висота шкали */
-    background-color: #c8a400;
+    
     border-radius: 10px;
     position: relative;
     overflow: hidden;
