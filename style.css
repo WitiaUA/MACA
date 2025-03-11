@@ -57,3 +57,13 @@ h1 {
     color: black;
     text-align: center;
 }
+
+.gold-icon {
+    display: inline-block;
+    width: 1em; /* Розмір під текст */
+    height: 1em;
+    background: white url('https://minecraft.wiki/images/Raw_Gold_JE3_BE2.png') 
+                center/contain no-repeat;
+    vertical-align: middle;
+    border-radius: 2px; /* М'які краї, щоб краще виглядало */
+}
