@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-   
-
-    // Логування значень
     let logBox = document.createElement("div");
     logBox.style.position = "fixed";
     logBox.style.bottom = "10px";
@@ -16,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
         logBox.innerHTML += message + "<br>";
     }
 
-    log("Максимальне значення: " + maxValue);
-    log("Зібране значення: " + currentValue);
+    let maxValue = 100;
+    let currentValue = 30;
 
     let collectedElement = document.getElementById("collected");
     let neededElement = document.getElementById("needed");
@@ -28,22 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateProgress() {
         let progress = (currentValue / maxValue) * 100;
-        console.log("Оновлення шкали: " + progress + "%");
         progressElement.style.height = progress + "%";
+
+        // Очищення логів перед оновленням
+        logBox.innerHTML = "";
+
+        // Додавання оновлених логів
+        log("Максимальне значення: " + maxValue);
+        log("Зібране значення: " + currentValue);
+        log("Прогрес: " + progress.toFixed(2) + "%");
     }
 
     updateProgress();
 
-    // Зчитуємо дані з JSON файлу
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            maxValue = data.maxValue;
-            currentValue = data.currentValue;
-
+    // Для тесту: збільшувати currentValue кожні 2 секунди
+    setInterval(() => {
+        if (currentValue < maxValue) {
+            currentValue += 5; // або інше значення
             collectedElement.innerText = currentValue;
-            neededElement.innerText = maxValue;
             updateProgress();
-        })
-        .catch(error => log("Помилка при завантаженні даних: " + error));
+        }
+    }, 2000);
 });
