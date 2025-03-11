@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вертикальна шкала прогресу</title>
+    <title>Шкала прогресу</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="header">
-        <h1>Прогрес збору</h1>
-        <img src="https://tsebuleve.wiki.gg/uk/images/d/df/Логотип_тг_МАСА.jpeg?a5c620&format=original" 
-             alt="Логотип" class="header-logo">
-    </div>
-
-    <div class="progress-container">
-        <div class="progress-bar" id="progress"></div>
-        <div class="progress-text">
-            <p id="collected">0</p>
-            <p>/</p>
-            <p id="needed">100</p>
+    <div class="container">
+        <img class="logo" src="https://tsebuleve.wiki.gg/uk/images/d/df/Логотип_тг_МАСА.jpeg?a5c620&format=original" alt="Логотип">
+        
+        <div class="progress-container">
+            <div class="progress-text">
+                <p id="collected">0</p>
+                <p>/</p>
+                <p id="needed">100</p>
+                <img class="gold-icon" src="https://minecraft.wiki/images/Raw_Gold_JE3_BE2.png?749e1" alt="Raw Gold">
+            </div>
+            <div class="progress-bar" id="progress"></div>
         </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
