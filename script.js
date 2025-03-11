@@ -13,37 +13,66 @@ document.addEventListener("DOMContentLoaded", function () {
         logBox.innerHTML += message + "<br>";
     }
 
-    let maxValue = 100;
-    let currentValue = 30;
-
-    let collectedElement = document.getElementById("collected");
-    let neededElement = document.getElementById("needed");
-    let progressElement = document.getElementById("progress");
-
-    collectedElement.innerText = currentValue;
-    neededElement.innerText = maxValue;
-
-    function updateProgress() {
-        let progress = (currentValue / maxValue) * 100;
-        progressElement.style.height = progress + "%";
-
-        // Очищення логів перед оновленням
-        logBox.innerHTML = "";
-
-        // Додавання оновлених логів
-        log("Максимальне значення: " + maxValue);
-        log("Зібране значення: " + currentValue);
-        log("Прогрес: " + progress.toFixed(2) + "%");
+    // Функція для завантаження JSON
+    function loadJSON(callback) {
+        fetch("data.json")
+            .then(response => response.json())
+            .then(data => callback(data))
+            .catch(error => log("❌ Помилка завантаження JSON: " + error));
     }
 
-    updateProgress();
+    // Функція для збереження JSON (працює лише на сервері)
+    function saveJSON(data) {
+        fetch("data.json", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+        .then(response => log("✅ Дані збережено!"))
+        .catch(error => log("❌ Помилка збереження JSON: " + error));
+    }
 
-    // Для тесту: збільшувати currentValue кожні 2 секунди
-    setInterval(() => {
-        if (currentValue < maxValue) {
-            currentValue += 5; // або інше значення
-            collectedElement.innerText = currentValue;
-            updateProgress();
+    loadJSON(function (data) {
+        let maxValue = data.maxValue;
+        let currentValue = data.currentValue;
+
+        let collectedElement = document.getElementById("collected");
+        let neededElement = document.getElementById("needed");
+        let progressElement = document.getElementById("progress");
+
+        collectedElement.innerText = currentValue;
+        neededElement.innerText = maxValue;
+
+        function updateProgress() {
+            let progress = (currentValue / maxValue) * 100;
+            progressElement.style.height = progress + "%";
+
+            logBox.innerHTML = "";
+            log("Максимальне значення: " + maxValue);
+            log("Зібране значення: " + currentValue);
+            log("Прогрес: " + progress.toFixed(2) + "%");
         }
-    }, 2000);
+
+        updateProgress();
+
+        // Додаємо кнопку для редагування значень
+        let editButton = document.createElement("button");
+        editButton.innerText = "Змінити значення";
+        editButton.style.position = "fixed";
+        editButton.style.bottom = "50px";
+        editButton.style.left = "10px";
+        document.body.appendChild(editButton);
+
+        editButton.addEventListener("click", function () {
+            let newValue = parseInt(prompt("Введіть нове значення:"));
+            if (!isNaN(newValue) && newValue <= maxValue) {
+                currentValue = newValue;
+                collectedElement.innerText = currentValue;
+                updateProgress();
+                saveJSON({ maxValue, currentValue });
+            } else {
+                log("❌ Некоректне значення!");
+            }
+        });
+    });
 });
