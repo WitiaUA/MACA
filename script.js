@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let maxValue = 100;
-    let currentValue = 30;
+   
 
     // Логування значень
     let logBox = document.createElement("div");
