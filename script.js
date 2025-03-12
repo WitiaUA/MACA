@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let collected = 50; // Ти можеш змінити це значення
-    const needed = 100;
-    const progressElement = document.getElementById("progress");
-    const collectedText = document.getElementById("collected");
+    fetch("data.json")  // Завантажуємо JSON-файл
+        .then(response => response.json())
+        .then(data => {
+            const maxValue = data.maxValue;
+            const currentValue = data.currentValue;
 
-    function updateProgress() {
-        let percentage = (collected / needed) * 100;
-        progressElement.style.width = percentage + "%";
-        collectedText.textContent = collected;
-    }
+            const progressElement = document.getElementById("progress");
+            const collectedText = document.getElementById("collected");
+            const neededText = document.getElementById("needed");
 
-    updateProgress();
+            let percentage = (currentValue / maxValue) * 100;
+            progressElement.style.width = percentage + "%";
+            collectedText.textContent = currentValue;
+            neededText.textContent = maxValue;
+        })
+        .catch(error => console.error("Помилка завантаження JSON:", error));
 });
