@@ -5,26 +5,27 @@ body {
 }
 
 .container {
-    max-width: 400px;
+    max-width: 600px; /* Збільшено ширину для ПК */
     margin: 50px auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .progress-container {
     width: 100%;
     background-color: #ddd;
     border-radius: 10px;
-    padding: 5px;
+    padding: 8px; /* Трохи більше відступів */
     margin: 20px 0;
+    border: 2px solid #bbb; /* Додано рамку */
 }
 
 .progress-bar {
-    width: 0%; /* Початкове значення */
-    height: 20px;
-    background-color: gold;
+    width: 0%;
+    height: 25px; /* Трохи вища шкала */
+    background: linear-gradient(to right, gold, orange); /* Градієнт для кращого вигляду */
     border-radius: 10px;
 }
 
@@ -35,6 +36,22 @@ body {
 
 .progress-text {
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 20px; /* Збільшено розмір шрифту */
     font-weight: bold;
+    color: #333;
+}
+
+/* Додаємо адаптивність */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .progress-bar {
+        height: 20px;
+    }
+
+    .progress-text {
+        font-size: 18px;
+    }
 }
