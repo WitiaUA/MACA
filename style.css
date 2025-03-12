@@ -22,11 +22,15 @@ body {
 }
 
 .progress-bar {
-    width: 50%; /* Ти можеш змінити це значення */
+    width: 0%; /* Початкове значення */
     height: 20px;
     background-color: gold;
     border-radius: 10px;
-    transition: width 0.5s;
+}
+
+/* Додаємо клас для анімації після завантаження */
+.progress-bar.animated {
+    transition: width 0.5s ease-in-out;
 }
 
 .progress-text {
