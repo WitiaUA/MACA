@@ -8,32 +8,33 @@
 <body>
 
     <div class="container">
+        <!-- Логотип -->
         <img src="https://tsebuleve.wiki.gg/uk/images/d/df/Логотип_тг_МАСА.jpeg?a5c620&format=original" 
              alt="Логотип" 
              width="250" 
              height="250">
 
         <h1>Прогрес</h1>
+
+        <!-- Іконка золота -->
         <img src="https://minecraft.wiki/images/Raw_Gold_JE3_BE2.png?749e1" 
              alt="Raw Gold" 
              width="100" 
              height="100">
 
-        <div class="progress-container">
-            <!-- Окремий блок для чисел -->
-            <div style="text-align: center;">
-                <div id="collected">0</div>
-                <div>/</div>
-                <div id="needed">100</div>
-            </div>
-            
-            <!-- Шкала прогресу -->
-            <div style="width: 100%; height: 20px; background-color: #ddd; position: relative;">
-                <div id="progress" style="height: 100%; width: 0%; background-color: green;"></div>
+        <!-- Шкала прогресу -->
+        <div style="position: relative; width: 100%; height: 20px; background-color: #ddd;">
+            <div id="progress" style="height: 100%; width: 30%; background-color: green;"></div>
+
+            <!-- Числа всередині шкали в один рядок -->
+            <div style="position: absolute; width: 100%; top: 50%; transform: translateY(-50%); text-align: center;">
+                <span id="collected">30</span> /
+                <span id="needed">100</span>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
