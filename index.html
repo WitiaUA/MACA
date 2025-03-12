@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Шкала прогресу</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -21,12 +20,10 @@
              height="100">
 
         <div class="progress-container">
-            <div class="progress-text">
-                <p id="collected">0</p>
-                <br>
-                <p>/</p>
-                <br>
-                <p id="needed">100</p>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div id="collected">0</div>
+                <div>/</div>
+                <div id="needed">100</div>
             </div>
             <div class="progress-bar" id="progress"></div>
         </div>
