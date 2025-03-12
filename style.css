@@ -50,7 +50,3 @@ body {
     bottom: 0;
     transition: height 0.5s ease-in-out;
 }
-
-.progress-text {
-    text-align: center;
-}
