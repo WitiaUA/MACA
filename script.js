@@ -22,14 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 progressElement.classList.add("animated");
             }, 100);
 
-            // Додаємо мітки на шкалу
-            const marks = [
-                { value: 10, label: "10 - Бронза" },
-                { value: 100, label: "100 - Срібло" },
-                { value: 400, label: "400 - Золото" }
-            ];
+            // Очищення шкали перед вставкою міток
+            scaleContainer.innerHTML = "";
 
-            scaleContainer.innerHTML = ""; // Очистка перед додаванням міток
+            // Набір міток для 7000
+            const marks = [
+                { value: 10, label: "10 - Початок" },
+                { value: 1000, label: "1K - Пістолет" },
+                { value: 3000, label: "3K - Автомат" },
+                { value: 5000, label: "5K - Кулемет" },
+                { value: 7000, label: "7K - Зенітка" }
+            ];
 
             marks.forEach(mark => {
                 if (mark.value <= maxValue) {
