@@ -26,9 +26,7 @@ body {
 .progress-scale {
     position: absolute;
     width: 100%;
-    top: -20px; /* Піднімаємо мітки над шкалою */
-    display: flex;
-    justify-content: space-between;
+    top: -20px;
 }
 
 .mark {
