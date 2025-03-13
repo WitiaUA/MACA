@@ -8,42 +8,38 @@ document.addEventListener("DOMContentLoaded", function () {
             const progressElement = document.getElementById("progress");
             const collectedText = document.getElementById("collected");
             const neededText = document.getElementById("needed");
-            const rewardText = document.getElementById("reward-text");
-            const progressScale = document.getElementById("progress-scale");
+            const scaleContainer = document.getElementById("progress-scale");
 
             let percentage = (currentValue / maxValue) * 100;
             progressElement.style.width = percentage + "%";
 
+            // Оновлюємо текст
             collectedText.textContent = currentValue;
             neededText.textContent = maxValue;
 
+            // Додаємо клас анімації
             setTimeout(() => {
                 progressElement.classList.add("animated");
             }, 100);
 
-            // Очищаємо попередні мітки
-            progressScale.innerHTML = "";
+            // Додаємо мітки на шкалу
+            const marks = [
+                { value: 10, label: "10 - Бронза" },
+                { value: 100, label: "100 - Срібло" },
+                { value: 400, label: "400 - Золото" }
+            ];
 
-            // Додаємо нові мітки
-            const marks = [10, 100, 400];
-            marks.forEach(value => {
-                if (value > maxValue) return; // Ігноруємо мітки, що перевищують maxValue
+            scaleContainer.innerHTML = ""; // Очистка перед додаванням міток
 
-                let position = (value / maxValue) * 100;
-                let markElement = document.createElement("span");
-                markElement.classList.add("mark");
-                markElement.style.left = position + "%";
-                markElement.textContent = value;
-                progressScale.appendChild(markElement);
+            marks.forEach(mark => {
+                if (mark.value <= maxValue) {
+                    let markElement = document.createElement("div");
+                    markElement.classList.add("mark");
+                    markElement.textContent = mark.label;
+                    markElement.style.left = (mark.value / maxValue) * 100 + "%";
+                    scaleContainer.appendChild(markElement);
+                }
             });
-
-            // Логіка нагород
-            let reward = "-";
-            if (currentValue >= 400) reward = "💎 Діамантовий рівень!";
-            else if (currentValue >= 100) reward = "🏆 Золотий рівень!";
-            else if (currentValue >= 10) reward = "🥉 Бронзовий рівень!";
-
-            rewardText.textContent = `Нагорода: ${reward}`;
         })
         .catch(error => console.error("Помилка завантаження JSON:", error));
 });
