@@ -1,57 +1,26 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-}
-
-.container {
-    max-width: 600px; /* Збільшено ширину для ПК */
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
 .progress-container {
+    position: relative;
+}
+
+.progress-scale {
+    position: absolute;
     width: 100%;
-    background-color: #ddd;
-    border-radius: 10px;
-    padding: 8px; /* Трохи більше відступів */
-    margin: 20px 0;
-    border: 2px solid #bbb; /* Додано рамку */
+    top: -20px; /* Піднімаємо мітки над шкалою */
+    display: flex;
+    justify-content: space-between;
 }
 
-.progress-bar {
-    width: 0%;
-    height: 25px; /* Трохи вища шкала */
-    background: linear-gradient(to right, gold, orange); /* Градієнт для кращого вигляду */
-    border-radius: 10px;
-}
-
-/* Додаємо клас для анімації після завантаження */
-.progress-bar.animated {
-    transition: width 0.5s ease-in-out;
-}
-
-.progress-text {
-    margin-top: 10px;
-    font-size: 20px; /* Збільшено розмір шрифту */
-    font-weight: bold;
+.mark {
+    position: absolute;
+    font-size: 14px;
     color: #333;
+    font-weight: bold;
+    transform: translateX(-50%);
 }
 
-/* Додаємо адаптивність */
-@media (max-width: 768px) {
-    .container {
-        max-width: 90%;
-    }
-
-    .progress-bar {
-        height: 20px;
-    }
-
-    .progress-text {
-        font-size: 18px;
-    }
+.rewards {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
 }
