@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const rewardText = document.getElementById("reward-text");
             const progressScale = document.getElementById("progress-scale");
 
-            // Динамічний розрахунок ширини шкали
             let percentage = (currentValue / maxValue) * 100;
             progressElement.style.width = percentage + "%";
 
@@ -22,12 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 progressElement.classList.add("animated");
             }, 100);
 
-            // Динамічні мітки
-            const marks = [10, 100, 400]; // Значення для міток
-            progressScale.innerHTML = ""; // Очищаємо, щоб не було дублювання
+            // Очищаємо попередні мітки
+            progressScale.innerHTML = "";
 
+            // Додаємо нові мітки
+            const marks = [10, 100, 400];
             marks.forEach(value => {
-                let position = (value / maxValue) * 100; // Обчислення позиції
+                if (value > maxValue) return; // Ігноруємо мітки, що перевищують maxValue
+
+                let position = (value / maxValue) * 100;
                 let markElement = document.createElement("span");
                 markElement.classList.add("mark");
                 markElement.style.left = position + "%";
