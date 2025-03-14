@@ -44,7 +44,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: -20px;
+    margin-top: 5px; /* Підняв числа, щоб не було зміщення */
     font-size: 14px;
     font-weight: bold;
 }
@@ -52,7 +52,7 @@ body {
 .progress-label {
     position: absolute;
     transform: translateX(-50%);
-    top: -20px;
+    bottom: 20px; /* Числа тепер вище */
     white-space: nowrap; /* Запобігає переносу тексту */
 }
 
@@ -61,7 +61,7 @@ body {
     width: 2px;
     height: 10px;
     background-color: white; /* Колір поділок */
-    top: 5px;
+    bottom: 5px; /* Тепер поділки стирчать вгору */
 }
 
 #rewards-list {
