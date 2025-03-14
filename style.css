@@ -64,6 +64,11 @@ body {
     bottom: 5px; /* Тепер поділки стирчать вгору */
 }
 
+.received {
+    color: gold;
+    font-weight: bold;
+}
+
 #rewards-list {
     text-align: center;
     margin-top: 15px;
