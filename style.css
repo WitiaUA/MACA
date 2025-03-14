@@ -1,71 +1,72 @@
 body {
-font-family: Arial, sans-serif;
-text-align: center;
-margin: 30px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 30px;
+    background-color: #222; /* Темний фон */
+    color: white; /* Білий текст */
 }
 
 .progress-container {
-position: relative;
-width: 80%;
-max-width: 600px;
-margin: 20px auto;
-background: #eee;
-border-radius: 10px;
-padding: 20px;
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #333; /* Темний фон шкали */
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .progress-scale {
-position: relative;
-width: 100%;
-height: 5px;
-background-color: #ddd;
-border-radius: 5px;
-margin-top: 5px;
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background-color: #555; /* Сіра шкала */
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .progress-bar {
-height: 5px;
-background-color: yellow;
-width: 0;
-transition: width 0.5s ease-in-out;
-position: relative;
-margin-top: -5px;
+    height: 5px;
+    background-color: gold; /* Яскравіший жовтий */
+    width: 0;
+    position: relative;
+    margin-top: -5px;
 }
 
 .progress-text {
-margin-top: 10px;
-font-size: 16px;
-font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .progress-labels {
-position: relative;
-width: 100%;
-display: flex;
-justify-content: space-between;
-margin-top: -20px;
-font-size: 14px;
-font-weight: bold;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -20px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .progress-label {
-position: absolute;
-transform: translateX(-50%);
-top: -20px;
+    position: absolute;
+    transform: translateX(-50%);
+    top: -20px;
+    white-space: nowrap; /* Запобігає переносу тексту */
 }
 
 .progress-tick {
-position: absolute;
-width: 2px;
-height: 10px;
-background-color: black;
-top: -3px;
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: white; /* Колір поділок */
+    top: 5px;
 }
 
 #rewards-list {
-text-align: center;
-margin-top: 15px;
-list-style-type: none;
-padding: 0;
+    text-align: center;
+    margin-top: 15px;
+    list-style-type: none;
+    padding: 0;
 }
-
