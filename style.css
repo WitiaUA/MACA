@@ -9,30 +9,28 @@ body {
     width: 80%;
     max-width: 600px;
     margin: 20px auto;
-    background: #f8f8f8;
+    background: #eee;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .progress-scale {
     position: relative;
     width: 100%;
-    height: 8px;
+    height: 10px;
     background-color: #ddd;
     border-radius: 5px;
-    margin-top: 5px;
-    overflow: hidden;
+    margin-top: 10px;
 }
 
 .progress-bar {
-    height: 8px;
-    background: linear-gradient(90deg, #ffcc00, #ff8800);
+    height: 10px;
+    background-color: gold;
     width: 0;
-    transition: width 0.5s ease-in-out;
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 5px;
 }
 
 .progress-labels {
@@ -40,29 +38,24 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 5px;
 }
 
 .progress-label {
     position: absolute;
     transform: translateX(-50%);
-    bottom: -20px;
+    top: -20px;
+    white-space: nowrap;
 }
 
 .progress-tick {
     position: absolute;
     width: 2px;
-    height: 10px;
+    height: 15px;
     background-color: black;
     bottom: -5px;
-}
-
-.progress-text {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
 }
 
 #rewards-list {
