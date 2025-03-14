@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data.json")
         .then(response => response.json())
         .then(data => {
-            let currentProgress = data.current; // Наприклад, 700
-            let maxProgress = data.max; // Наприклад, 2000
+            let currentProgress = data.currentValue; // Наприклад, 700
+            let maxProgress = data.maxValue; // Наприклад, 2000
 
             progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
             progressText.textContent = `${currentProgress} / ${maxProgress}`;
