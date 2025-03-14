@@ -29,6 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
             progressText.textContent = `${currentProgress} / ${maxProgress}`;
+
+         
+    .then(response => response.json())
+    .then(data => {
+        console.log("Отримані дані:", data); // Подивимося, що реально приходить
+        let currentProgress = data.current;
+        let maxProgress = data.max;
+
+        progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
+        progressText.textContent = `${currentProgress} / ${maxProgress}`;
+    })
+    .catch(error => console.error("Помилка завантаження даних:", error));
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 });
