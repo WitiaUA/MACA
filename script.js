@@ -22,16 +22,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 progressElement.classList.add("animated");
             }, 100);
 
-            // Очищення шкали перед вставкою міток
+            // Очищення шкали перед вставкою нових елементів
             scaleContainer.innerHTML = "";
 
             // Набір міток для 7000
             const marks = [
-                { value: 10, label: "10 - Початок" },
-                { value: 1000, label: "1K - Пістолет" },
-                { value: 3000, label: "3K - Автомат" },
-                { value: 5000, label: "5K - Кулемет" },
-                { value: 7000, label: "7K - Зенітка" }
+                { value: 10, label: "10 - Бронза" },
+                { value: 1000, label: "1K - Початківець" },
+                { value: 3000, label: "3K - Досвідчений" },
+                { value: 5000, label: "5K - Майстер" },
+                { value: 7000, label: "7K - Легенда" }
             ];
 
             marks.forEach(mark => {
@@ -43,6 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     scaleContainer.appendChild(markElement);
                 }
             });
+
+            // Додаємо риски кожні 500 одиниць
+            for (let i = 0; i <= maxValue; i += 500) {
+                let tick = document.createElement("div");
+                tick.classList.add("tick");
+                tick.style.left = (i / maxValue) * 100 + "%";
+                scaleContainer.appendChild(tick);
+            }
         })
         .catch(error => console.error("Помилка завантаження JSON:", error));
 });
