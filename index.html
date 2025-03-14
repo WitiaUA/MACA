@@ -22,8 +22,10 @@
         </div>
 
         <div class="progress-container">
-            <!-- Контейнер для шкали міток -->
-            <div class="progress-scale" id="progress-scale"></div>
+            <!-- Лінія шкали з мітками -->
+            <div class="progress-scale">
+                <div class="scale-line"></div>
+            </div>
 
             <!-- Шкала прогресу -->
             <div class="progress-bar" id="progress"></div>
@@ -35,6 +37,9 @@
                 <span id="needed">100</span>
             </div>
         </div>
+
+        <!-- Контейнер для підписів міток -->
+        <div class="progress-labels" id="progress-labels"></div>
     </div>
 
     <script src="script.js"></script>
