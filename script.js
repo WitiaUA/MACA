@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressBar = document.querySelector(".progress-bar");
     const progressText = document.querySelector(".progress-text");
     const rewardsList = document.getElementById("rewards-list");
-    const errorMessage = document.getElementById("error-message"); // Блок для помилок
+    const errorMessage = document.getElementById("error-message");
 
+    // Додаємо мітки шкали
     const labelValues = [0, 200, 400, 600, 800, 1000, 1400, 1800, 2000];
-
     labelValues.forEach(value => {
         let label = document.createElement("div");
         label.classList.add("progress-label");
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         progressLabels.appendChild(tick);
     });
 
+    // Винагороди
     const rewards = {
         1200: "Алмаз",
         1400: "Елітри",
@@ -42,23 +43,36 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(data => {
-                let currentProgress = data.currentValue; 
+                let currentProgress = data.currentValue;
                 let maxProgress = data.maxValue;
 
+                // Оновлення прогрес-бару
                 progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
                 progressText.textContent = `${currentProgress} / ${maxProgress}`;
 
+                // Очищуємо попередні винагороди
                 rewardsList.innerHTML = "";
 
+                let hasRewards = false;
+
+                // Додаємо винагороди у список
                 Object.keys(rewards).forEach(value => {
                     if (currentProgress >= value) {
                         let listItem = document.createElement("li");
                         listItem.textContent = `${value}: ${rewards[value]}`;
                         rewardsList.appendChild(listItem);
+                        hasRewards = true;
                     }
                 });
 
-                errorMessage.textContent = ""; // Очищуємо помилку, якщо все добре
+                // Якщо немає жодної винагороди, вивести повідомлення
+                if (!hasRewards) {
+                    let listItem = document.createElement("li");
+                    listItem.textContent = "Ще немає винагород";
+                    rewardsList.appendChild(listItem);
+                }
+
+                errorMessage.textContent = ""; // Очистити помилки
             })
             .catch(error => showError(error.message));
     }
