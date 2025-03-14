@@ -40,6 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
             Object.entries(rewards).forEach(([value, reward]) => {
                 let listItem = document.createElement("li");
                 listItem.textContent = `${value}: ${reward}`;
+
+                // Додаємо клас "received", якщо винагорода вже отримана
+                if (currentProgress >= value) {
+                    listItem.classList.add("received");
+                }
+
                 rewardsList.appendChild(listItem);
             });
         })
