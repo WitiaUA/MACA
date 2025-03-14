@@ -26,7 +26,7 @@ body {
 .progress-bar {
     height: 5px;
     background-color: yellow;
-    width: 35.7%;
+    width: 0;
     transition: width 0.5s ease-in-out;
     position: relative;
     margin-top: -5px;
@@ -67,10 +67,4 @@ body {
     margin-top: 15px;
     list-style-type: none;
     padding: 0;
-}
-
-.progress-image {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 500px;
 }
