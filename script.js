@@ -8,24 +8,35 @@ document.addEventListener("DOMContentLoaded", function () {
             const progressElement = document.getElementById("progress");
             const collectedText = document.getElementById("collected");
             const neededText = document.getElementById("needed");
-            const scaleContainer = document.getElementById("progress-scale");
+            const labelsContainer = document.getElementById("progress-labels");
+            const scaleContainer = document.querySelector(".progress-scale");
 
-            // Визначаємо мітки для шкали (початок, 10, 100, 1000, 7000)
+            // Мітки для шкали
             const marks = [10, 100, 1000, 7000, maxValue];
 
-            // Додаємо мітки на шкалу
-            scaleContainer.innerHTML = "";
+            // Очищаємо попередні мітки
+            labelsContainer.innerHTML = "";
+            scaleContainer.innerHTML = '<div class="scale-line"></div>';
+
             marks.forEach(value => {
                 let position = (value / maxValue) * 100;
+
+                // Додаємо риску
                 let mark = document.createElement("div");
                 mark.classList.add("scale-mark");
                 mark.style.left = position + "%";
-
-                let label = document.createElement("span");
-                label.textContent = value;
-                mark.appendChild(label);
-
                 scaleContainer.appendChild(mark);
+
+                // Додаємо підпис під міткою
+                let label = document.createElement("div");
+                label.classList.add("progress-label");
+                label.style.width = "30px"; // Фіксований розмір, щоб не зміщувались
+                label.style.textAlign = "center";
+                label.textContent = value;
+                label.style.position = "absolute";
+                label.style.left = position + "%";
+                label.style.transform = "translateX(-50%)";
+                labelsContainer.appendChild(label);
             });
 
             // Оновлення шкали прогресу
