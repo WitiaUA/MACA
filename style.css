@@ -33,7 +33,7 @@ body {
     transition: width 0.5s ease-in-out;
 }
 
-/* Додаємо шкалу з мітками */
+/* Контейнер для шкали */
 .progress-scale {
     position: absolute;
     width: 100%;
@@ -44,6 +44,7 @@ body {
     z-index: 2;
 }
 
+/* Стилі для міток */
 .mark {
     position: absolute;
     bottom: 100%;
@@ -55,4 +56,13 @@ body {
     border: 1px solid #bbb;
     border-radius: 5px;
     white-space: nowrap;
+}
+
+/* Лінії-риски */
+.tick {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    height: 10px;
+    background: black;
 }
