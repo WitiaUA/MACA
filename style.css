@@ -1,66 +1,71 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 30px;
+font-family: Arial, sans-serif;
+text-align: center;
+margin: 30px;
 }
 
 .progress-container {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
-    background: #eee;
-    border-radius: 10px;
-    padding: 20px;
+position: relative;
+width: 80%;
+max-width: 600px;
+margin: 20px auto;
+background: #eee;
+border-radius: 10px;
+padding: 20px;
 }
 
 .progress-scale {
-    position: relative;
-    width: 100%;
-    height: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-top: 10px;
+position: relative;
+width: 100%;
+height: 5px;
+background-color: #ddd;
+border-radius: 5px;
+margin-top: 5px;
 }
 
 .progress-bar {
-    height: 10px;
-    background-color: gold;
-    width: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px;
+height: 5px;
+background-color: yellow;
+width: 0;
+transition: width 0.5s ease-in-out;
+position: relative;
+margin-top: -5px;
+}
+
+.progress-text {
+margin-top: 10px;
+font-size: 16px;
+font-weight: bold;
 }
 
 .progress-labels {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: bold;
+position: relative;
+width: 100%;
+display: flex;
+justify-content: space-between;
+margin-top: -20px;
+font-size: 14px;
+font-weight: bold;
 }
 
 .progress-label {
-    position: absolute;
-    transform: translateX(-50%);
-    top: -20px;
-    white-space: nowrap;
+position: absolute;
+transform: translateX(-50%);
+top: -20px;
 }
 
 .progress-tick {
-    position: absolute;
-    width: 2px;
-    height: 15px;
-    background-color: black;
-    bottom: -5px;
+position: absolute;
+width: 2px;
+height: 10px;
+background-color: black;
+top: -3px;
 }
 
 #rewards-list {
-    text-align: center;
-    margin-top: 15px;
-    list-style-type: none;
-    padding: 0;
+text-align: center;
+margin-top: 15px;
+list-style-type: none;
+padding: 0;
 }
+
