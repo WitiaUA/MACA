@@ -1,5 +1,5 @@
 {
-    "currentValue": 500,
+    "currentValue": 1500,
     "maxValue": 2000,
     "rewards": [
         { "threshold": 200, "name": "Залізний злиток", "description": "Маленька нагорода для початку" },
