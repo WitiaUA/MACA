@@ -1,3 +1,4 @@
+document.getElementById("rewards-list").innerHTML
 document.addEventListener("DOMContentLoaded", function () {
     const progressLabels = document.querySelector(".progress-labels");
     const progressBar = document.querySelector(".progress-bar");
