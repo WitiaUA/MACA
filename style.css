@@ -24,32 +24,44 @@ body {
     overflow: hidden;
 }
 
-/* Додаємо шкалу з рисками та мітками */
+/* Лінія для шкали */
 .progress-scale {
-    position: absolute;
-    top: -20px; /* Піднімаємо мітки трохи вище */
-    left: 0;
+    position: relative;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    height: 10px;
 }
 
+.scale-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Мітки на шкалі */
 .scale-mark {
-    position: relative;
-    width: 1px;
-    height: 10px;
+    position: absolute;
+    bottom: -8px;
+    width: 2px;
+    height: 15px;
     background-color: black;
 }
 
-.scale-mark span {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+/* Контейнер для текстових міток */
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.progress-label {
     font-size: 14px;
     color: black;
 }
-
+  
 /* Шкала прогресу */
 .progress-bar {
     width: 0%;
