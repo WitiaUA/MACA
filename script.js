@@ -20,18 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
         progressLabels.appendChild(tick);
     });
 
-    // Симуляція підключення даних
-    setTimeout(() => {
-        let data = {
-            current: 700,  // Наприклад, 700
-            max: 2000      // Наприклад, 2000
-        };
+    // Підтягуємо значення з data файлу (імітація)
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            let currentProgress = data.current; // Наприклад, 700
+            let maxProgress = data.max; // Наприклад, 2000
 
-        if (data && data.current !== undefined && data.max !== undefined) {
-            progressBar.style.width = `${(data.current / data.max) * 100}%`;
-            progressText.textContent = `${data.current} / ${data.max}`;
-        } else {
-            progressText.textContent = "Помилка завантаження!";
-        }
-    }, 500); // Імітація затримки
+            progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
+            progressText.textContent = `${currentProgress} / ${maxProgress}`;
+        })
+        .catch(error => console.error("Помилка завантаження даних:", error));
 });
