@@ -40,7 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
         progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
         progressText.textContent = `${currentProgress} / ${maxProgress}`;
     })
-    .catch(error => console.error("Помилка завантаження даних:", error));
-        })
+    .catch(error => {
+    console.error("Помилка завантаження даних:", error);
+    document.body.innerHTML += `<p style="color:red;">Помилка: ${error}</p>`;
+});
+           
         .catch(error => console.error("Помилка завантаження даних:", error));
 });
