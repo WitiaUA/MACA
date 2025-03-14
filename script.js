@@ -1,33 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const maxValue = 2000;
-    const currentValue = 700; // Твоє поточне значення
+    const progressLabels = document.querySelector(".progress-labels");
+    const progressBar = document.querySelector(".progress-bar");
+    const progressText = document.querySelector(".progress-text");
 
-    const progressElement = document.getElementById("progress");
-    const collectedText = document.getElementById("collected");
-    const neededText = document.getElementById("needed");
-    const progressLabels = document.getElementById("progress-labels");
+    // Ручний список чисел на шкалі
+    const labelValues = [0, 200, 400, 600, 800, 1000, 1400, 1800, 2000];
 
-    let percentage = (currentValue / maxValue) * 100;
-    progressElement.style.width = percentage + "%";
-
-    // Оновлення чисел
-    collectedText.textContent = currentValue;
-    neededText.textContent = maxValue;
-
-    // Очищення попередніх міток
-    progressLabels.innerHTML = "";
-
-    for (let i = 0; i <= maxValue; i += 200) {
-        let tick = document.createElement("div");
-        tick.classList.add("progress-tick");
-        tick.style.left = (i / maxValue) * 100 + "%";
-
+    labelValues.forEach(value => {
         let label = document.createElement("div");
         label.classList.add("progress-label");
-        label.style.left = (i / maxValue) * 100 + "%";
-        label.textContent = i;
+        label.style.left = `${(value / 2000) * 100}%`;
+        label.textContent = value;
 
-        progressLabels.appendChild(tick);
+        let tick = document.createElement("div");
+        tick.classList.add("progress-tick");
+        tick.style.left = `${(value / 2000) * 100}%`;
+
         progressLabels.appendChild(label);
-    }
+        progressLabels.appendChild(tick);
+    });
+
+    // Підтягуємо значення з data файлу (імітація)
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            let currentProgress = data.current; // Наприклад, 700
+            let maxProgress = data.max; // Наприклад, 2000
+
+            progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
+            progressText.textContent = `${currentProgress} / ${maxProgress}`;
+        })
+        .catch(error => console.error("Помилка завантаження даних:", error));
 });
