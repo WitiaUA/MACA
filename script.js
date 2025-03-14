@@ -20,15 +20,20 @@ document.addEventListener("DOMContentLoaded", function () {
         progressLabels.appendChild(tick);
     });
 
-    // Підтягуємо значення з data файлу (імітація)
-    fetch("data.json")
-        .then(response => response.json())
-        .then(data => {
-            let currentProgress = data.currentValue; // Наприклад, 700
-            let maxProgress = data.maxValue; // Наприклад, 2000
+    function updateProgress() {
+        let cacheBuster = new Date().getTime(); // Унікальний параметр для уникнення кешу
+        fetch(`data.json?t=${cacheBuster}`)
+            .then(response => response.json())
+            .then(data => {
+                let currentProgress = data.currentValue;
+                let maxProgress = data.maxValue;
 
-            progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
-            progressText.textContent = `${currentProgress} / ${maxProgress}`;
-        })
-        .catch(error => console.error("Помилка завантаження даних:", error));
+                progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
+                progressText.textContent = `${currentProgress} / ${maxProgress}`;
+            })
+            .catch(error => console.error("Помилка завантаження даних:", error));
+    }
+
+    updateProgress(); // Викликаємо одразу при завантаженні
+    setInterval(updateProgress, 20000); // Оновлюємо кожні 5 секунд
 });
