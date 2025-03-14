@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressLabels = document.querySelector(".progress-labels");
     const progressBar = document.querySelector(".progress-bar");
     const progressText = document.querySelector(".progress-text");
+    const rewardsList = document.getElementById("rewards-list"); // Список винагород
 
     // Ручний список чисел на шкалі
-    const labelValues = [0, 200, 400, 600, 800, 1000, 1400, 1800, 2000];
+    const labelValues = [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000];
 
     labelValues.forEach(value => {
         let label = document.createElement("div");
@@ -20,20 +21,33 @@ document.addEventListener("DOMContentLoaded", function () {
         progressLabels.appendChild(tick);
     });
 
-    function updateProgress() {
-        let cacheBuster = new Date().getTime(); // Унікальний параметр для уникнення кешу
-        fetch(`data.json?t=${cacheBuster}`)
-            .then(response => response.json())
-            .then(data => {
-                let currentProgress = data.currentValue;
-                let maxProgress = data.maxValue;
+    // Завантаження прогресу та винагород
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            let currentProgress = data.currentValue;
+            let maxProgress = data.maxValue;
 
-                progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
-                progressText.textContent = `${currentProgress} / ${maxProgress}`;
-            })
-            .catch(error => console.error("Помилка завантаження даних:", error));
-    }
+            // Оновлення шкали прогресу
+            progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
+            progressText.textContent = `${currentProgress} / ${maxProgress}`;
 
-    updateProgress(); // Викликаємо одразу при завантаженні
-    setInterval(updateProgress, 20000); // Оновлюємо кожні 5 секунд
+            // Оновлення списку винагород
+            rewardsList.innerHTML = ""; // Очистити перед оновленням
+            data.rewards.forEach(reward => {
+                let listItem = document.createElement("li");
+                listItem.innerHTML = `<b>${reward.name}</b> - ${reward.description}<br>`;
+
+                if (currentProgress >= reward.threshold) {
+                    listItem.innerHTML += `✅ <i>Отримано!</i>`;
+                    listItem.style.color = "gold";
+                } else {
+                    listItem.innerHTML += `❌ <i>Не досягнуто</i>`;
+                    listItem.style.color = "gray";
+                }
+
+                rewardsList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error("Помилка завантаження даних:", error));
 });
