@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressBar = document.querySelector(".progress-bar");
     const progressText = document.querySelector(".progress-text");
     const rewardsList = document.getElementById("rewards-list");
+    const errorMessage = document.getElementById("error-message"); // Блок для помилок
 
-    // Початковий список чисел на шкалі (без 1200 та 1600)
     const labelValues = [0, 200, 400, 600, 800, 1000, 1400, 1800, 2000];
 
     labelValues.forEach(value => {
@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         progressLabels.appendChild(tick);
     });
 
-    // Винагороди
     const rewards = {
         1200: "Алмаз",
         1400: "Елітри",
@@ -30,18 +29,27 @@ document.addEventListener("DOMContentLoaded", function () {
         2000: "Драконове яйце"
     };
 
+    function showError(message) {
+        errorMessage.textContent = "Помилка: " + message;
+    }
+
     function updateProgress() {
         fetch("data.json")
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Не вдалося завантажити data.json (код " + response.status + ")");
+                }
+                return response.json();
+            })
             .then(data => {
-                let currentProgress = data.currentValue; // Наприклад, 700
-                let maxProgress = data.maxValue; // Наприклад, 2000
+                let currentProgress = data.currentValue; 
+                let maxProgress = data.maxValue;
 
                 progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
                 progressText.textContent = `${currentProgress} / ${maxProgress}`;
 
-                // Оновлення списку винагород
-                rewardsList.innerHTML = ""; // Очищення перед додаванням нових
+                rewardsList.innerHTML = "";
+
                 Object.keys(rewards).forEach(value => {
                     if (currentProgress >= value) {
                         let listItem = document.createElement("li");
@@ -49,10 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         rewardsList.appendChild(listItem);
                     }
                 });
+
+                errorMessage.textContent = ""; // Очищуємо помилку, якщо все добре
             })
-            .catch(error => console.error("Помилка завантаження даних:", error));
+            .catch(error => showError(error.message));
     }
 
     updateProgress();
-    setInterval(updateProgress, 5000); // Оновлення кожні 5 секунд
+    setInterval(updateProgress, 5000);
 });
