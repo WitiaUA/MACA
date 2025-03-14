@@ -69,4 +69,6 @@ body {
     margin-top: 15px;
     list-style-type: none;
     padding: 0;
+    background-color: #222; /* Темний фон та білий текст */
+    color: white;
 }
