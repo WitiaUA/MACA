@@ -1,61 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("data.json")
-        .then(response => response.json())
-        .then(data => {
-            const maxValue = data.maxValue;
-            const currentValue = data.currentValue;
+    const maxValue = 2000;
+    const currentValue = 700; // Твоє поточне значення
 
-            const progressElement = document.getElementById("progress");
-            const collectedText = document.getElementById("collected");
-            const neededText = document.getElementById("needed");
-            const labelsContainer = document.getElementById("progress-labels");
-            const scaleContainer = document.querySelector(".progress-scale");
-            const rewardsList = document.getElementById("rewards-list");
+    const progressElement = document.getElementById("progress");
+    const collectedText = document.getElementById("collected");
+    const neededText = document.getElementById("needed");
+    const progressLabels = document.getElementById("progress-labels");
 
-            let percentage = (currentValue / maxValue) * 100;
-            progressElement.style.width = percentage + "%";
+    let percentage = (currentValue / maxValue) * 100;
+    progressElement.style.width = percentage + "%";
 
-            // Оновлюємо текст
-            collectedText.textContent = currentValue;
-            neededText.textContent = maxValue;
+    // Оновлення чисел
+    collectedText.textContent = currentValue;
+    neededText.textContent = maxValue;
 
-            // Очищаємо попередні мітки та шкалу
-            labelsContainer.innerHTML = "";
-            scaleContainer.innerHTML = "";
+    // Очищення попередніх міток
+    progressLabels.innerHTML = "";
 
-            // Створюємо мітки кожні 200 одиниць
-            for (let value = 0; value <= maxValue; value += 200) {
-                let position = (value / maxValue) * 100;
+    for (let i = 0; i <= maxValue; i += 200) {
+        let tick = document.createElement("div");
+        tick.classList.add("progress-tick");
+        tick.style.left = (i / maxValue) * 100 + "%";
 
-                // Додаємо числові мітки над шкалою
-                let label = document.createElement("div");
-                label.className = "progress-label";
-                label.style.left = `calc(${position}% - 10px)`;
-                label.textContent = value;
-                labelsContainer.appendChild(label);
+        let label = document.createElement("div");
+        label.classList.add("progress-label");
+        label.style.left = (i / maxValue) * 100 + "%";
+        label.textContent = i;
 
-                // Додаємо риски на шкалі
-                let tick = document.createElement("div");
-                tick.className = "progress-tick";
-                tick.style.left = `${position}%`;
-                scaleContainer.appendChild(tick);
-            }
-
-            // Додаємо список нагород
-            const rewards = {
-                100: "Початок досліджень",
-                300: "Алмазний блок",
-                600: "Залізний меч",
-                1000: "Золотий пікель",
-                2000: "Маяк"
-            };
-
-            rewardsList.innerHTML = "";
-            for (let key in rewards) {
-                let rewardItem = document.createElement("li");
-                rewardItem.textContent = `${key}: ${rewards[key]}`;
-                rewardsList.appendChild(rewardItem);
-            }
-        })
-        .catch(error => console.error("Помилка завантаження JSON:", error));
+        progressLabels.appendChild(tick);
+        progressLabels.appendChild(label);
+    }
 });
