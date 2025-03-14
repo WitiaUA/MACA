@@ -1,79 +1,70 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 30px;
 }
 
 .progress-container {
-    width: 100%;
     position: relative;
-    background-color: #ddd;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #eee;
     border-radius: 10px;
-    padding: 15px;
-    margin: 20px 0;
-    border: 2px solid #bbb;
-    overflow: hidden;
+    padding: 20px;
 }
 
-/* Лінія для шкали */
 .progress-scale {
     position: relative;
     width: 100%;
-    height: 10px;
-}
-
-.scale-line {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Мітки на шкалі */
-.scale-mark {
-    position: absolute;
-    bottom: -8px;
-    width: 2px;
-    height: 15px;
-    background-color: black;
-}
-
-/* Контейнер для текстових міток */
-.progress-labels {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 5px;
     margin-top: 5px;
 }
 
-.progress-label {
-    font-size: 14px;
-    color: black;
-}
-  
-/* Шкала прогресу */
 .progress-bar {
-    width: 0%;
-    height: 25px;
-    background: linear-gradient(to right, gold, orange);
-    border-radius: 10px;
+    height: 5px;
+    background-color: yellow;
+    width: 0;
     transition: width 0.5s ease-in-out;
+    position: relative;
+    margin-top: -5px;
 }
 
 .progress-text {
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    color: #333;
+}
+
+.progress-labels {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.progress-label {
+    position: absolute;
+    transform: translateX(-50%);
+    top: -20px;
+}
+
+.progress-tick {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: black;
+    top: -3px;
+}
+
+#rewards-list {
+    text-align: center;
+    margin-top: 15px;
+    list-style-type: none;
+    padding: 0;
 }
