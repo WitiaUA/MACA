@@ -16,6 +16,35 @@ body {
     padding: 20px;
 }
 
+/* Мітки над шкалою */
+.progress-labels {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Відступ для розділення шкали і міток */
+}
+
+.progress-label-wrapper {
+    position: absolute;
+    transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap; /* Запобігає переносу цифр на інший рядок */
+}
+
+.progress-label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.progress-tick {
+    width: 2px;
+    height: 10px;
+    background-color: white;
+    margin: 2px auto 0;
+}
+
+/* Шкала */
 .progress-scale {
     position: relative;
     width: 100%;
@@ -38,32 +67,6 @@ body {
     font-weight: bold;
 }
 
-.progress-labels {
-    position: relative;
-    width: 100%;
-    margin-top: -20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.progress-label-wrapper {
-    position: absolute;
-    transform: translateX(-50%);
-    text-align: center;
-}
-
-.progress-label {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.progress-tick {
-    width: 2px;
-    height: 10px;
-    background-color: white;
-    margin: 2px auto 0;
-}
-
 .received {
     color: gold;
     font-weight: bold;
@@ -78,7 +81,7 @@ body {
     color: white;
 }
 
-/* Стилі для кнопки пожертви */
+/* Кнопка пожертви */
 .donate-container {
     margin-top: 20px;
 }
@@ -95,4 +98,37 @@ body {
 
 .donate-button:hover {
     background-color: #ffdb4d;
+}
+
+/* Адаптація для мобільних */
+@media screen and (max-width: 600px) {
+    .progress-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .progress-labels {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .progress-label {
+        font-size: 10px; /* Менші цифри для мобільних */
+    }
+
+    .progress-tick {
+        height: 8px;
+    }
+
+    .progress-scale {
+        height: 4px;
+    }
+
+    .progress-bar {
+        height: 4px;
+    }
+
+    .progress-text {
+        font-size: 16px;
+    }
 }
