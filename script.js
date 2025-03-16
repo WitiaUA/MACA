@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressText = document.querySelector(".progress-text");
     const rewardsList = document.getElementById("rewards-list");
 
-    // Ручний список чисел на шкалі
+    // Фіксовані значення для шкали
     const labelValues = [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000];
 
     labelValues.forEach(value => {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Оновлення шкали прогресу
             progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
-            progressText.textContent = `${currentProgress} / ${maxProgress}`;
+            progressText.innerHTML = `${currentProgress} / ${maxProgress}`;
 
             // Очищення списку перед додаванням винагород
             rewardsList.innerHTML = "";
