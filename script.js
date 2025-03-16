@@ -1,44 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const progressLabels = document.querySelector(".progress-labels");
     const progressBar = document.querySelector(".progress-bar");
     const progressText = document.querySelector(".progress-text");
-    const progressLabels = document.querySelectorAll(".progress-labels span");
-    const progressTicks = document.querySelectorAll(".progress-tick");
+    const rewardsList = document.getElementById("rewards-list");
 
-    function updateProgress(value) {
-        // Обмеження значення від 0 до 100
-        value = Math.max(0, Math.min(100, value));
+    // Фіксовані значення поділок
+    const labelValues = [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000];
 
-        // Оновлення ширини шкали
-        progressBar.style.width = value + "%";
-        progressText.textContent = `Прогрес: ${value}%`;
+    // Додаємо мітки та поділки
+    labelValues.forEach(value => {
+        let labelWrapper = document.createElement("div");
+        labelWrapper.classList.add("progress-label-wrapper");
+        labelWrapper.style.left = `${(value / 2000) * 100}%`;
 
-        // Виділення досягнутих позначок
-        progressLabels.forEach((label, index) => {
-            let stepValue = index * (100 / (progressLabels.length - 1)); // Визначаємо значення для кожної позначки
-            if (value >= stepValue) {
-                label.classList.add("reached");
-            } else {
-                label.classList.remove("reached");
-            }
-        });
+        let label = document.createElement("div");
+        label.classList.add("progress-label");
+        label.textContent = value;
 
-        // Виділення досягнутих міток
-        progressTicks.forEach((tick, index) => {
-            let stepValue = index * (100 / (progressTicks.length - 1));
-            if (value >= stepValue) {
-                tick.classList.add("reached");
-            } else {
-                tick.classList.remove("reached");
-            }
-        });
-    }
+        let tick = document.createElement("div");
+        tick.classList.add("progress-tick");
 
-    // Симуляція оновлення (замінити на ваш реальний механізм)
-    let progressValue = 0;
-    setInterval(() => {
-        if (progressValue <= 100) {
-            updateProgress(progressValue);
-            progressValue += 10;
-        }
-    }, 1000);
+        labelWrapper.appendChild(label);
+        labelWrapper.appendChild(tick);
+        progressLabels.appendChild(labelWrapper);
+    });
+
+    // Завантаження даних із JSON
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            let currentProgress = data.currentValue;
+            let maxProgress = data.maxValue;
+            let rewards = data.rewards;
+
+            // Оновлення шкали прогресу
+            progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
+            progressText.innerHTML = `<span id="collected">${currentProgress}</span> / <span id="needed">${maxProgress}</span>`;
+
+            // Очищення списку перед додаванням винагород
+            rewardsList.innerHTML = "";
+
+            // Додавання винагород у список
+            Object.entries(rewards).forEach(([value, reward]) => {
+                let listItem = document.createElement("li");
+                listItem.textContent = `${value}: ${reward}`;
+
+                // Виділення досягнутих винагород
+                if (currentProgress >= value) {
+                    listItem.classList.add("received");
+                }
+
+                rewardsList.appendChild(listItem);
+            });
+
+            console.log("Винагороди завантажено:", rewards);
+        })
+        .catch(error => console.error("Помилка завантаження даних:", error));
 });
