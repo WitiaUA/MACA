@@ -29,7 +29,8 @@ body {
     height: 6px;
     background-color: gold;
     width: 0;
-    position: relative;
+    position: absolute;
+    top: 0; /* Повертає шкалу ближче до поділок */
 }
 
 .progress-text {
@@ -51,16 +52,16 @@ body {
 .progress-label {
     position: absolute;
     transform: translateX(-50%);
-    bottom: 15px;
+    bottom: 20px; /* Повертаємо числа шкали вище */
     white-space: nowrap;
 }
 
 .progress-tick {
     position: absolute;
     width: 2px;
-    height: 8px;
+    height: 10px;
     background-color: white;
-    bottom: 5px;
+    bottom: 6px; /* Підтягуємо поділки ближче до шкали */
 }
 
 .received {
@@ -89,14 +90,15 @@ body {
     }
 
     .progress-labels {
-        font-size: 10px; /* Повернуто малий шрифт для цифр */
+        font-size: 10px; /* Маленький шрифт для цифр шкали */
     }
 
     .progress-label {
-        bottom: 10px;
+        bottom: 15px; /* Трохи вище */
     }
 
     .progress-tick {
-        height: 6px;
+        height: 8px; /* Менші поділки */
+        bottom: 4px; /* Ще ближче до шкали */
     }
 }
