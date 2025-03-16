@@ -17,7 +17,7 @@ body {
     padding: 20px;
 }
 
-/* Числові мітки шкали */
+/* Контейнер для цифр і міток */
 .progress-labels {
     position: relative;
     width: 100%;
@@ -25,7 +25,23 @@ body {
     justify-content: space-between;
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px; /* Відступ перед шкалою */
+    margin-bottom: 5px; /* Відступ перед мітками */
+}
+
+/* Контейнер для міток */
+.progress-tick-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px; /* Відступ перед шкалою */
+}
+
+/* Чорточки (мітки) */
+.progress-tick {
+    width: 2px;
+    height: 10px;
+    background-color: white;
 }
 
 /* Лінія шкали */
@@ -46,21 +62,6 @@ body {
     top: 0;
 }
 
-/* Позначки (чорточки) під цифрами */
-.progress-tick-container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: -10px; /* Піднімаємо мітки під цифрами */
-}
-
-.progress-tick {
-    width: 2px;
-    height: 10px;
-    background-color: white;
-}
-
 /* Текст прогресу */
 .progress-text {
     margin-top: 10px;
@@ -77,11 +78,11 @@ body {
 
     .progress-labels {
         font-size: 12px;
-        margin-bottom: 3px; /* Менший відступ перед шкалою */
+        margin-bottom: 3px; /* Менший відступ перед мітками */
     }
 
     .progress-tick-container {
-        margin-top: -8px; /* Налаштовуємо положення міток */
+        margin-bottom: 2px; /* Регулюємо відстань міток до шкали */
     }
 
     .progress-text {
