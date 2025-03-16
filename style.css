@@ -6,6 +6,7 @@ body {
     color: white;
 }
 
+/* Контейнер прогресу */
 .progress-container {
     position: relative;
     width: 80%;
@@ -16,6 +17,7 @@ body {
     padding: 20px;
 }
 
+/* Шкала */
 .progress-scale {
     position: relative;
     width: 100%;
@@ -25,20 +27,16 @@ body {
     margin-top: 5px;
 }
 
+/* Заповнення шкали */
 .progress-bar {
     height: 5px;
     background-color: gold;
     width: 0;
     position: relative;
-    margin-top: -5px; /* Повернув вище */
+    margin-top: -5px; /* Вирівнює шкалу */
 }
 
-.progress-text {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
+/* Числові мітки шкали */
 .progress-labels {
     position: relative;
     width: 100%;
@@ -49,13 +47,14 @@ body {
     font-weight: bold;
 }
 
-.progress-label {
-    position: absolute;
-    transform: translateX(-50%);
-    bottom: 20px;
-    white-space: nowrap;
+/* Текст прогресу */
+.progress-text {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
+/* Позначки (чорточки) під шкалою */
 .progress-tick {
     position: absolute;
     width: 2px;
@@ -64,11 +63,7 @@ body {
     bottom: 5px;
 }
 
-.received {
-    color: gold;
-    font-weight: bold;
-}
-
+/* Список винагород */
 #rewards-list {
     text-align: center;
     margin-top: 15px;
@@ -78,7 +73,13 @@ body {
     color: white;
 }
 
-/* Стилі для кнопки пожертви */
+/* Отримані винагороди */
+.received {
+    color: gold;
+    font-weight: bold;
+}
+
+/* Кнопка пожертви */
 .donate-container {
     margin-top: 20px;
 }
@@ -96,4 +97,25 @@ body {
 
 .donate-button:hover {
     background-color: #218838;
+}
+
+/* 📱 АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ */
+@media (max-width: 480px) {
+    .progress-container {
+        width: 95%; /* Робить шкалу трохи ширшою */
+        padding: 15px;
+    }
+
+    .progress-labels {
+        font-size: 12px; /* Зменшує цифри шкали */
+    }
+
+    .progress-text {
+        font-size: 16px; /* Робить текст з прогресом трохи меншим */
+    }
+
+    .donate-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }
