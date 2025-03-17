@@ -19,14 +19,24 @@ document.addEventListener("DOMContentLoaded", function () {
             // Оновлення висоти шкали прогресу
             progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
 
-            // Додавання міток до шкали
+            // Очищення попередніх міток
             progressLabels.innerHTML = "";
+
+            // Додавання міток до шкали
             labelValues.forEach(value => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
+
                 let position = (value / maxProgress) * 100;
-                label.style.bottom = `calc(${position}% - 10px)`;
+
+                label.style.position = "absolute";
+                label.style.left = "-40px"; // Щоб мітки не накладалися на шкалу
+                label.style.bottom = `calc(${position}% - 8px)`;
+                label.style.color = "black"; 
+                label.style.fontSize = "14px";
+                label.style.fontWeight = "bold";
+                
                 progressLabels.appendChild(label);
             });
 
@@ -40,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 rewardsList.appendChild(listItem);
             });
+
+            console.log("Мітки додано:", progressLabels.innerHTML); // Лог для перевірки
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 });
