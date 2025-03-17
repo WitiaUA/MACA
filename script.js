@@ -56,23 +56,20 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Винагороди завантажено:", rewards);
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
-
-    // Додаємо обробник події для кнопки "Пожертва в е-нз"
-    let donateButton = document.querySelector(".donate-button[data-type='e-nz']");
-    if (donateButton) {
-        donateButton.addEventListener("click", function (event) {
-            event.preventDefault(); // Запобігаємо стандартному переходу
-
-            let confirmDonate = confirm(
-                "Щоб зробити пожертву:\n" +
-                "1. Натисни 'OK', щоб перейти в бот.\n" +
-                "2. Введи команду: /pay 123 123\n" +
-                "3. Підтвердь оплату."
-            );
-
-            if (confirmDonate) {
-                window.open("https://t.me/quadrobank_bot?start", "_blank");
-            }
-        });
-    }
 });
+
+// Функція для відображення інструкцій перед пожертвою
+function showDonationInstructions(event) {
+    event.preventDefault(); // Запобігаємо переходу за посиланням
+
+    let confirmDonate = confirm(
+        "Щоб зробити пожертву:\n" +
+        "1. Натисни 'OK', щоб перейти в бот.\n" +
+        "2. Введи команду: /pay 123 123\n" +
+        "3. Підтвердь оплату."
+    );
+
+    if (confirmDonate) {
+        window.open("https://t.me/quadrobank_bot?start", "_blank");
+    }
+}
