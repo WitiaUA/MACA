@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressLabels = document.querySelector(".progress-labels");
     const rewardsList = document.getElementById("rewards-list");
 
-    // Значення для шкали
     const labelValues = [
         20000, 18000, 16000, 15000, 14000, 13000, 12000, 11000, 10000, 9000, 8000, 6969, 
         6000, 4949, 4500, 4000, 3500, 3000, 2500, 2000, 1750, 1488, 1250, 1000, 500, 250, 100, 49
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             let currentProgress = data.currentValue;
-            let maxProgress = Math.max(...labelValues); // Максимальне значення шкали
+            let maxProgress = data.maxValue;
 
             // Оновлення висоти шкали прогресу
             progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
@@ -30,14 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 let position = (value / maxProgress) * 100;
 
                 label.style.position = "absolute";
-                label.style.left = "-60px"; // Щоб мітки не накладалися на шкалу
-                label.style.bottom = `${position}%`;
-                label.style.transform = "translateY(50%)";
+                label.style.left = "-60px"; // Відступ від шкали
+                label.style.top = `calc(100% - ${position}%)`; // Змінено bottom на top
+                label.style.transform = "translateY(-50%)";
                 label.style.color = "black"; 
                 label.style.fontSize = "14px";
                 label.style.fontWeight = "bold";
-                label.style.backgroundColor = "yellow"; // Фон для перевірки
-                label.style.border = "1px solid red"; // Червона рамка для дебагу
+                label.style.backgroundColor = "yellow";
+                label.style.border = "1px solid red";
 
                 progressLabels.appendChild(label);
             });
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 rewardsList.appendChild(listItem);
             });
 
-            console.log("Мітки додано:", progressLabels.innerHTML); // Лог для перевірки у консолі
+            console.log("Мітки додано:", progressLabels.innerHTML);
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 });
