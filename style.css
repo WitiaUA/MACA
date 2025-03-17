@@ -58,12 +58,13 @@ body {
 }
 
 .progress-label {
-    position: absolute;
+
     left: -10px;
     transform: translateY(50%);
     font-size: 14px;
     font-weight: bold;
     color: black;
+    position: relative;
 }
 
 /* Кнопки */
