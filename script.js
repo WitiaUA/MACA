@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 label.style.position = "absolute";
                 label.style.left = "-40px"; // Щоб мітки не накладалися на шкалу
-               label.style.top = `calc(${100 - position}% - 8px)`;
+                label.style.bottom = `calc(${position}% - 8px)`;
 
                 label.style.color = "black"; 
                 label.style.fontSize = "14px";
