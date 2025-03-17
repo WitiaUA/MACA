@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay 123 123 у Telegram. Перейти до Telegram?");
             if (confirmDonate) {
-                window.location.href = "https://t.me/quadrobank_bot";
+                window.location.href = "https://t.me/quadrobank_bot?start";
             }
         });
     } else {
