@@ -120,10 +120,9 @@ body {
 
 /* Виконані нагороди */
 .received {
-    color: gold;
+    color: gold !important;
     font-weight: bold;
     text-shadow: 0px 0px 10px gold; /* Світіння */
-    border: 2px solid gold; /* Золотиста рамка */
     padding: 5px;
     border-radius: 5px;
 }
