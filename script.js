@@ -30,13 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 let position = (value / maxProgress) * 100;
 
                 label.style.position = "absolute";
-                label.style.left = "-50px"; // Щоб мітки не накладалися на шкалу
+                label.style.left = "-60px"; // Щоб мітки не накладалися на шкалу
                 label.style.bottom = `${position}%`;
-                label.style.transform = "translateY(50%)"; // Щоб текст не був зміщеним
+                label.style.transform = "translateY(50%)";
                 label.style.color = "black"; 
                 label.style.fontSize = "14px";
                 label.style.fontWeight = "bold";
-                
+                label.style.backgroundColor = "yellow"; // Фон для перевірки
+                label.style.border = "1px solid red"; // Червона рамка для дебагу
+
                 progressLabels.appendChild(label);
             });
 
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 rewardsList.appendChild(listItem);
             });
 
-            console.log("Мітки додано:", progressLabels.innerHTML); // Лог для перевірки
+            console.log("Мітки додано:", progressLabels.innerHTML); // Лог для перевірки у консолі
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 });
