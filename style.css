@@ -44,6 +44,7 @@ body {
     flex-direction: column;
     justify-content: space-between; /* Рівномірно розподілив мітки */
     align-items: flex-end;
+     background-color: white;
     font-size: 14px; /* Трохи зменшив шрифт */
     color: black;
 }
@@ -54,13 +55,21 @@ body {
     transform: translateY(-50%);
 }
 
-
-
-
-.progress-label {
-    position: relative;
-    transform: translateY(-50%);
+/* Додав рисочки поруч із мітками */
+.progress-labels div {
+    display: flex;
+    align-items: center;
 }
+
+.progress-labels div::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: black;
+    margin-left: 5px;
+}
+
 
 
 /* Блок з кнопками */
