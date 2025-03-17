@@ -14,37 +14,31 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             let currentProgress = data.currentValue;
-            let maxProgress = data.maxValue;
+            let maxProgress = Math.max(...labelValues); // Максимальне значення шкали
 
             // Оновлення висоти шкали прогресу
             progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
+
+            // Додавання міток до шкали
+            progressLabels.innerHTML = "";
+            labelValues.forEach(value => {
+                let label = document.createElement("div");
+                label.classList.add("progress-label");
+                label.textContent = value;
+                let position = (value / maxProgress) * 100;
+                label.style.bottom = `calc(${position}% - 10px)`;
+                progressLabels.appendChild(label);
+            });
 
             // Оновлення списку винагород
             rewardsList.innerHTML = "";
             Object.entries(data.rewards).forEach(([value, reward]) => {
                 let listItem = document.createElement("li");
                 listItem.textContent = `${value}: ${reward}`;
-                
-                // Якщо поточний прогрес досяг позначки — підсвічуємо
                 if (currentProgress >= value) {
                     listItem.classList.add("received");
                 }
-
                 rewardsList.appendChild(listItem);
-            });
-
-            // Оновлення міток шкали
-            progressLabels.innerHTML = "";
-            labelValues.forEach(value => {
-                let label = document.createElement("div");
-                label.classList.add("progress-label");
-                label.textContent = value;
-
-                // Позиціонуємо мітку на відповідному рівні шкали
-                let position = (value / maxProgress) * 100;
-                label.style.bottom = `calc(${position}% - 10px)`; // -10px для центрування
-
-                progressLabels.appendChild(label);
             });
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
