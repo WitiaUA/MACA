@@ -8,12 +8,21 @@ body {
 
 .progress-container {
     position: relative;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     margin: 20px auto;
     background: #333;
     border-radius: 10px;
     padding: 20px;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 0 5px;
 }
 
 .progress-scale {
@@ -22,7 +31,7 @@ body {
     height: 5px;
     background-color: #555;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .progress-bar {
@@ -34,45 +43,43 @@ body {
 
 .progress-text {
     margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.progress-labels {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 .progress-label {
     position: absolute;
     transform: translateX(-50%);
-    bottom: 25px;
+    bottom: 15px;
     white-space: nowrap;
+    font-size: 10px; /* Зменшив шрифт для мобільних */
 }
 
 .progress-tick {
     position: absolute;
-    width: 2px;
-    height: 10px;
+    width: 1.5px;
+    height: 8px;
     background-color: white;
     bottom: 5px;
 }
 
-.received {
-    color: gold;
-    font-weight: bold;
-}
+/* Адаптація для мобільних */
+@media (max-width: 480px) {
+    .progress-labels {
+        font-size: 10px;
+        padding: 0;
+    }
 
-#rewards-list {
-    text-align: center;
-    margin-top: 15px;
-    list-style-type: none;
-    padding: 0;
-    background-color: #222;
-    color: white;
+    .progress-label {
+        font-size: 9px;
+        bottom: 12px;
+    }
+
+    .progress-tick {
+        height: 6px;
+    }
+
+    .progress-text {
+        font-size: 14px;
+    }
 }
