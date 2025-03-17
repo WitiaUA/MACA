@@ -41,12 +41,7 @@ body {
 
 /* Вертикальні мітки шкали */
 .progress-labels {
-   border: 1px solid red; 
-    background: yellow; 
-    padding: 5px;
-    z-index: 9999;
-    position: absolute; /* Переконайся, що вони точно абсолютні */
-
+  .progress-labels {
     position: absolute;
     left: -50px;
     width: 50px;
@@ -56,6 +51,7 @@ body {
     align-items: flex-end;
     justify-content: space-between;
 }
+
 
 .progress-label {
     position: absolute;
