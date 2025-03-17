@@ -21,6 +21,8 @@ body {
 /* Контейнер прогресу */
 .progress-container {
     position: relative;
+    z-index: 1;
+
     width: 80px;
     height: 500px;
     background-color: #ddd;
