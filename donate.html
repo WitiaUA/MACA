@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пожертви</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
 
@@ -15,12 +14,14 @@
         <a href="https://maps.igeln.xyz/borukva/#Borukva;flat;0,64,0;6" class="donate-button" target="_blank">
             Пожертвувати фізично
         </a>
-        <a href="#" class="donate-button" onclick="showDonationInstructions(event)">
+        <a href="#" class="donate-button" id="donate-enz">
             Пожертвувати в е-нз
         </a>
     </div>
 
     <a href="index.html" class="back-button">⬅ Назад</a>
 
+    <!-- Правильне підключення JavaScript в кінці body -->
+    <script src="script.js"></script>
 </body>
 </html>
