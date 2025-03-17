@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // ======== Налаштування шкали прогресу ========
     const progressLabels = document.querySelector(".progress-labels");
     const progressBar = document.querySelector(".progress-bar");
     const progressText = document.querySelector(".progress-text");
@@ -56,20 +57,21 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Винагороди завантажено:", rewards);
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
-});
 
-// Функція для відображення інструкцій перед пожертвою
-function showDonationInstructions(event) {
-    event.preventDefault(); // Запобігаємо переходу за посиланням
+    // ======== Налаштування кнопки "Пожертвувати в е-нз" ========
+    const donateButton = document.getElementById("donate-enz");
 
-    let confirmDonate = confirm(
-        "Щоб зробити пожертву:\n" +
-        "1. Натисни 'OK', щоб перейти в бот.\n" +
-        "2. Введи команду: /pay 123 123\n" +
-        "3. Підтвердь оплату."
-    );
+    if (donateButton) {
+        donateButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Запобігає переходу за посиланням
 
-    if (confirmDonate) {
-        window.open("https://t.me/quadrobank_bot?start", "_blank");
+            alert("Щоб зробити пожертву:\n1. Натисни 'OK', щоб перейти в бот.\n2. У Telegram введи команду: /pay 123 123\n3. Підтвердь оплату.");
+
+            window.open("https://t.me/quadrobank_bot", "_blank"); // Просто відкриває бота
+        });
+
+        console.log("Кнопка для пожертви знайдена та обробник додано.");
+    } else {
+        console.error("Кнопку для пожертви не знайдено!");
     }
-}
+});
