@@ -41,6 +41,8 @@ body {
 
 /* Вертикальні мітки шкали */
 .progress-labels {
+    z-index: 9999; /* Велике значення, щоб підняти їх над іншими елементами */
+    
     position: absolute;
     left: -50px;
     width: 50px;
