@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         donateButton.addEventListener("click", function (event) {
             event.preventDefault();
-            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay 123 123 у Telegram. Перейти до Telegram?");
+            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
             if (confirmDonate) {
                 window.location.href = "https://t.me/quadrobank_bot?start";
             }
