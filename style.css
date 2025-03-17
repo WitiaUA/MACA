@@ -42,7 +42,11 @@ body {
 /* Вертикальні мітки шкали */
 .progress-labels {
     z-index: 9999; /* Велике значення, щоб підняти їх над іншими елементами */
-    
+
+    border: 1px solid red; /* Дасть рамку, щоб їх точно було видно */
+    background: yellow; /* Чіткий фон */
+    padding: 5px;
+
     position: absolute;
     left: -50px;
     width: 50px;
