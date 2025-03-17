@@ -15,7 +15,6 @@ body {
     gap: 20px;
     padding: 20px;
 }
-
 /* Оновлений стиль для прогрес-бара */
 .progress-container {
     position: relative;
@@ -24,7 +23,7 @@ body {
     background-color: #f3f3f3;
     border-radius: 10px;
     border: 2px solid #ccc;
-    overflow: hidden;
+    overflow: visible; /* Дозволяє виходити міткам за межі контейнера */
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -43,11 +42,12 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around; /* Рівномірно розподілив мітки */
+    justify-content: space-between; /* Рівномірно розподілив мітки */
     align-items: flex-end;
     font-size: 14px; /* Трохи зменшив шрифт */
     color: black;
 }
+
 
 .progress-label {
     position: relative;
