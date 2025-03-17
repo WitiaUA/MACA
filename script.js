@@ -1,76 +1,46 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Скрипт завантажено!");
-
-    // Логіка для шкали прогресу (тільки якщо вона є на сторінці)
+    const progressContainer = document.querySelector(".progress-container");
+    const progressBar = document.querySelector(".progress-bar");
     const progressLabels = document.querySelector(".progress-labels");
-    if (progressLabels) {
-        console.log("Знайдено елементи шкали прогресу, виконуємо відповідний код.");
-        
-        const progressBar = document.querySelector(".progress-bar");
-        const progressText = document.querySelector(".progress-text");
-        const rewardsList = document.getElementById("rewards-list");
+    const rewardsList = document.getElementById("rewards-list");
 
-        const labelValues = [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000];
+    // Фіксовані значення шкали
+    const labelValues = [
+        20000, 18000, 16000, 15000, 14000, 13000, 12000, 11000, 10000, 9000, 8000, 6969, 
+        6000, 4949, 4500, 4000, 3500, 3000, 2500, 2000, 1750, 1488, 1250, 1000, 500, 250, 100, 49
+    ];
 
-        labelValues.forEach(value => {
-            let labelWrapper = document.createElement("div");
-            labelWrapper.classList.add("progress-label-wrapper");
-            labelWrapper.style.left = `${(value / 2000) * 100}%`;
+    // Додаємо мітки до шкали
+    labelValues.forEach(value => {
+        let label = document.createElement("div");
+        label.classList.add("progress-label");
+        label.textContent = value;
+        progressLabels.appendChild(label);
+    });
 
-            let label = document.createElement("div");
-            label.classList.add("progress-label");
-            label.textContent = value;
+    // Завантаження прогресу та винагород
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            let currentProgress = data.currentValue;
+            let maxProgress = Math.max(...labelValues);
 
-            let tick = document.createElement("div");
-            tick.classList.add("progress-tick");
+            // Оновлення шкали прогресу
+            progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
 
-            labelWrapper.appendChild(label);
-            labelWrapper.appendChild(tick);
-            progressLabels.appendChild(labelWrapper);
-        });
+            // Очищення та оновлення списку винагород
+            rewardsList.innerHTML = "";
+            Object.entries(data.rewards).forEach(([value, reward]) => {
+                let listItem = document.createElement("li");
+                listItem.textContent = `${value}: ${reward}`;
 
-        fetch("data.json")
-            .then(response => response.json())
-            .then(data => {
-                let currentProgress = data.currentValue;
-                let maxProgress = data.maxValue;
-                let rewards = data.rewards;
+                // Виділення отриманих винагород
+                if (currentProgress >= value) {
+                    listItem.classList.add("received");
+                }
 
-                progressBar.style.width = `${(currentProgress / maxProgress) * 100}%`;
-                progressText.innerHTML = `<span id="collected">${currentProgress}</span> / <span id="needed">${maxProgress}</span>`;
-
-                rewardsList.innerHTML = "";
-                Object.entries(rewards).forEach(([value, reward]) => {
-                    let listItem = document.createElement("li");
-                    listItem.textContent = `${value}: ${reward}`;
-
-                    if (currentProgress >= value) {
-                        listItem.classList.add("received");
-                    }
-
-                    rewardsList.appendChild(listItem);
-                });
-
-                console.log("Винагороди завантажено:", rewards);
-            })
-            .catch(error => console.error("Помилка завантаження даних:", error));
-    } else {
-        console.log("Шкали прогресу немає на цій сторінці.");
-    }
-
-    // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
-    const donateButton = document.getElementById("donate-enz");
-    if (donateButton) {
-        console.log("Знайдено кнопку пожертви в е-нз.");
-        
-        donateButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
-            if (confirmDonate) {
-                window.location.href = "https://t.me/quadrobank_bot?start";
-            }
-        });
-    } else {
-        console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
-    }
+                rewardsList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error("Помилка завантаження даних:", error));
 });
