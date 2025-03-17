@@ -31,7 +31,7 @@ body {
 
 .progress-bar {
     width: 100%;
-    background-color: #4caf50;
+    background-color: gold;
 }
 
 /* Мітки для прогрес-бара */
@@ -85,7 +85,7 @@ body {
 }
 
 .donate-button {
-    background-color: #FF5722;
+    background-color: gold;
 }
 
 .telegram-button {
@@ -109,10 +109,12 @@ body {
 }
 
 #rewards-list li {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    margin: 5px;
+   text-align: center;
+    margin-top: 15px;
+    padding: 0;
+    background-color: #222;
+    color: white;
+    list-style-type: none; /* Прибрані зайві крапки */
     border-radius: 5px;
 }
 
