@@ -20,19 +20,14 @@ body {
 .progress-container {
     position: relative;
     width: 80px;
-    height: 450px; /* Збільшена висота шкали */
+    height: 500px; /* Збільшена висота шкали */
     background-color: #f3f3f3;
     border-radius: 10px;
     border: 2px solid #ccc;
-    overflow: hidden;
+    overflow: visible; /* Дозволяє виходити міткам за межі контейнера */
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-}
-
-.progress-bar {
-    width: 100%;
-    background-color: #4caf50;
 }
 
 /* Мітки для прогрес-бара */
@@ -48,6 +43,14 @@ body {
     font-size: 16px;
     color: black;
 }
+
+
+.progress-bar {
+    width: 100%;
+    background-color: #4caf50;
+}
+
+
 
 .progress-label {
     position: relative;
