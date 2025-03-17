@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const progressContainer = document.querySelector(".progress-container");
     const progressBar = document.querySelector(".progress-bar");
     const progressLabels = document.querySelector(".progress-labels");
     const rewardsList = document.getElementById("rewards-list");
@@ -31,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 let position = (value / maxProgress) * 100;
 
                 label.style.position = "absolute";
-                label.style.left = "-40px"; // Щоб мітки не накладалися на шкалу
-                label.style.bottom = `calc(${position}% - 8px)`;
-
+                label.style.left = "-50px"; // Щоб мітки не накладалися на шкалу
+                label.style.bottom = `${position}%`;
+                label.style.transform = "translateY(50%)"; // Щоб текст не був зміщеним
                 label.style.color = "black"; 
                 label.style.fontSize = "14px";
                 label.style.fontWeight = "bold";
