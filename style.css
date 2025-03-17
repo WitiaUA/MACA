@@ -29,7 +29,7 @@ body {
 .progress-label {
     position: absolute;
     transform: translateX(-50%);
-    top: -15px; /* Підняв числа над шкалою */
+    top: -10px; /* Підняв числа над шкалою */
     white-space: nowrap;
     font-size: 10px;
 }
@@ -61,7 +61,7 @@ body {
     width: 1.5px;
     height: 8px;
     background-color: white;
-    top: -10px; /* Підняв поділки над шкалою */
+    top: 0px; /* Підняв поділки над шкалою */
 }
 
 /* Адаптація для мобільних */
