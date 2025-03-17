@@ -19,8 +19,8 @@ body {
 .progress-container {
     position: relative;
     width: 80px;
-    height: 1000px; /* Ще більше збільшена висота шкали */
-    background-color: #f3f3f3;
+    height: 800px; /* Ще більше збільшена висота шкали */
+    background-color: #ffffff; /* Змінено фон на білий */
     border-radius: 10px;
     border: 2px solid #ccc;
     overflow: visible; /* Дозволяє виходити міткам за межі контейнера */
@@ -37,7 +37,7 @@ body {
 /* Мітки для прогрес-бара */
 .progress-labels {
     position: absolute;
-    left: -60px; /* Відсунув мітки ще більше ліворуч */
+    left: -90px; /* Відсунув мітки ще більше ліворуч */
     top: 0;
     height: 100%;
     display: flex;
