@@ -56,10 +56,10 @@ body {
 /* Відмітки (поділки) ТЕПЕР під шкалою */
 .progress-tick {
     position: absolute;
-    width: 1.5px;
-    height: 8px;
+    width: 2px; /* Зробив ширшими */
+    height: 12px; /* Подовжив */
     background-color: white;
-    bottom: -10px; /* Опустив поділки */
+    bottom: -12px; /* Трохи опустив, щоб добре виглядали */
 }
 
 /* Стилізація тексту прогресу */
@@ -97,8 +97,8 @@ body {
     }
 
     .progress-tick {
-        height: 6px;
-        bottom: -4px;
+        height: 10px; /* Довші, але не занадто */
+        bottom: -8px;
     }
 
     .progress-text {
