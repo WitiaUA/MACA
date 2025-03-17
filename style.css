@@ -56,8 +56,8 @@ body {
 /* Відмітки (поділки) ТЕПЕР під шкалою */
 .progress-tick {
     position: absolute;
-    width: 2px; /* Зробив ширшими */
-    height: 12px; /* Подовжив */
+    width: 3px; /* Зробив ширшими */
+    height: 15px; /* Подовжив */
     background-color: white;
     bottom: -12px; /* Трохи опустив, щоб добре виглядали */
 }
