@@ -20,7 +20,7 @@ body {
 .progress-container {
     position: relative;
     width: 80px;
-    height: 400px;
+    height: 450px; /* Збільшена висота шкали */
     background-color: #f3f3f3;
     border-radius: 10px;
     border: 2px solid #ccc;
@@ -38,23 +38,21 @@ body {
 /* Мітки для прогрес-бара */
 .progress-labels {
     position: absolute;
-    left: 70px; /* Зсунув лівіше */
+    left: -50px; /* Відсунув мітки ліворуч */
     top: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end; /* Вирівняв мітки праворуч */
     font-size: 16px;
     color: black;
 }
 
 .progress-label {
-    position: absolute;
+    position: relative;
     transform: translateY(-50%);
 }
-
-
 
 
 /* Блок з кнопками */
