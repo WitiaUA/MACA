@@ -112,10 +112,12 @@ body {
    text-align: center;
     margin-top: 15px;
     padding: 0;
-    background-color: #222;
-    color: white;
+    color: #333333;
+    background: #FFFFFF;
+    text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+    color: #333333;
+    background: #FFFFFF;
     list-style-type: none; /* Прибрані зайві крапки */
-    border-radius: 5px;
 }
 
 /* Виконані нагороди */
