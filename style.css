@@ -120,8 +120,6 @@ body {
 
 /* Виконані нагороди */
 .received {
-    color: green;
+    color: gold;
     font-weight: bold;
-    background-color: #d4edda; /* Світло-зелений фон */
-    border-color: #155724;
 }
