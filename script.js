@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (confirmDonate) {
-                window.open("https://t.me/quadrobank_bot?start=pay_Maliyo_10", "_blank");
+                window.open("https://t.me/quadrobank_bot?start", "_blank");
             }
         });
     }
