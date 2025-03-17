@@ -38,9 +38,10 @@ body {
 /* Вертикальні мітки шкали */
 .progress-labels {
     position: absolute;
-    left: -50px; /* Відсунув ліворуч */
+    left: -50px;
     width: 50px;
     height: 100%;
+    top: 0;
 }
 
 /* Окремі мітки */
@@ -50,15 +51,17 @@ body {
     font-size: 14px;
     font-weight: bold;
     color: black;
-    transform: translateY(-50%);
+    background-color: yellow;
+    padding: 2px 5px;
+    border-radius: 5px;
 }
 
 /* Розташування міток вручну */
-.progress-label:nth-child(1) { top: 5%; }  /* Верх */
-.progress-label:nth-child(2) { top: 25%; } /* Чверть */
-.progress-label:nth-child(3) { top: 50%; } /* Половина */
-.progress-label:nth-child(4) { top: 75%; } /* Три чверті */
-.progress-label:nth-child(5) { top: 95%; } /* Низ */
+.progress-label:nth-child(1) { top: 0%; }    /* Верх */
+.progress-label:nth-child(2) { top: 25%; }  /* Чверть */
+.progress-label:nth-child(3) { top: 50%; }  /* Половина */
+.progress-label:nth-child(4) { top: 75%; }  /* Три чверті */
+.progress-label:nth-child(5) { top: 100%; } /* Низ */
 
 /* Блок з кнопками */
 .actions {
@@ -78,7 +81,7 @@ body {
     color: white;
     border-radius: 5px;
     width: 200px;
-    margin: 5px auto; /* Виправив, щоб кнопки не зміщувались */
+    margin: 5px auto;
 }
 
 .donate-button {
@@ -87,4 +90,36 @@ body {
 
 .telegram-button {
     background-color: #0088cc;
+}
+
+/* Список нагород */
+.rewards-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.rewards-container h2 {
+    margin-bottom: 10px;
+}
+
+/* Виправлений список нагород */
+#rewards-list {
+    list-style: none;
+    padding: 0;
+}
+
+#rewards-list li {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* Виконані нагороди */
+.received {
+    color: green;
+    font-weight: bold;
+    background-color: #d4edda; /* Світло-зелений фон */
+    border-color: #155724;
 }
