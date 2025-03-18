@@ -6,6 +6,12 @@ body {
     padding: 0;
     text-align: center;
 }
+/*заголовок */
+.hear {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 /* Контейнер */
 .container {
