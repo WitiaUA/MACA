@@ -2,10 +2,10 @@
 body {
     font-family: Arial, sans-serif;
 
-  background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
-  background-size: cover; /* для того, щоб картинка покривала весь екран */
-  background-position: center center; /* для центрування картинки */
-  background-repeat: no-repeat; /* щоб зображення не повторювалося */
+    background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
+    background-size: 50%; /* Зменшуємо розмір картинки до 50% */
+    background-position: 10% 10%; /* Відстань від країв (зміщення на 10% по обох осях X та Y) */
+    background-repeat: no-repeat; /* щоб зображення не повторювалося */
 
     margin: 0;
     padding: 0;
