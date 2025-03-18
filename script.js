@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let maxProgress = data.maxValue;
 
             // Оновлення висоти шкали прогресу
-            progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
+            progressBar.style.height = getProgressHeight(currentProgress) + "%";
 
             // Очищення попередніх міток
             progressLabels.innerHTML = "";
@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                let position = (value / maxProgress) * 100;
+                let position = getProgressHeight(value);
+                label.style.bottom = position + "%";
 
                 progressLabels.appendChild(label);
             });
@@ -46,41 +47,39 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 
+    // Функція для коригування висоти шкали
+    function getProgressHeight(value) {
+        if (value >= labelValues[0]) return 100; // Найвище значення = 100%
+        if (value <= labelValues[labelValues.length - 1]) return 0; // Найнижче значення = 0%
 
-     // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
+        for (let i = 0; i < labelValues.length - 1; i++) {
+            if (value >= labelValues[i + 1] && value <= labelValues[i]) {
+                let minVal = labelValues[i + 1];
+                let maxVal = labelValues[i];
 
-     const donateButton = document.getElementById("donate-enz");
- 
-    if (donateButton) {
- 
+                let minHeight = (i + 1) / (labelValues.length - 1) * 100;
+                let maxHeight = i / (labelValues.length - 1) * 100;
 
-        console.log("Знайдено кнопку пожертви в е-нз.");
- 
-        donateButton.addEventListener("click", function (event) {
- 
-
-            event.preventDefault();
- 
-
-            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
- 
-
-            if (confirmDonate) {
- 
-
-                window.location.href = "https://t.me/quadrobank_bot?start";
- 
-
+                let relativePosition = (value - minVal) / (maxVal - minVal);
+                return minHeight + relativePosition * (maxHeight - minHeight);
             }
- 
+        }
+        return 0; // Якщо значення не знайдено (теоретично неможливо)
+    }
+
+    // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
+    const donateButton = document.getElementById("donate-enz");
+
+    if (donateButton) {
+        console.log("Знайдено кнопку пожертви в е-нз.");
+        donateButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
+            if (confirmDonate) {
+                window.location.href = "https://t.me/quadrobank_bot?start";
+            }
         });
- 
-
     } else {
- 
-
         console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
- 
-
     }
 });
