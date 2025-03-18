@@ -31,24 +31,23 @@ body {
 
 .progress-bar {
     width: 100%;
-    background-color: gold;
+    background-color: #4caf50;
 }
 
 /* Мітки для прогрес-бара */
 .progress-labels {
     position: absolute;
-    left: -90px; /* Відсунув мітки ще більше ліворуч */
+    left: -60px; /* Посунув мітки ближче до шкали */
     top: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Рівномірно розподілив мітки */
     align-items: flex-end;
-     background-color: white;
+    background-color: transparent; /* Виправлено фон, щоб був прозорим */
     font-size: 14px; /* Трохи зменшив шрифт */
     color: black;
 }
-
 
 .progress-label {
     position: relative;
@@ -59,6 +58,7 @@ body {
 .progress-labels div {
     display: flex;
     align-items: center;
+    background-color: transparent; /* Виправлено фон */
 }
 
 .progress-labels div::after {
@@ -69,8 +69,6 @@ body {
     background-color: black;
     margin-left: 5px;
 }
-
-
 
 /* Блок з кнопками */
 .actions {
@@ -118,7 +116,7 @@ body {
 }
 
 #rewards-list li {
-   text-align: center;
+    text-align: center;
     margin-top: 15px;
     padding: 0;
     text-shadow: 0px 0px 0px #FFFFFF, 1px 1px 0px rgba(0,0,0,0.15);
@@ -135,4 +133,3 @@ body {
     padding: 5px;
     border-radius: 5px;
 }
-
