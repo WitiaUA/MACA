@@ -28,16 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let position = (value / maxProgress) * 100;
 
-                label.style.position = "absolute";
-                label.style.left = "-60px"; // Відступ від шкали
-                label.style.top = `calc(100% - ${position}%)`; // Змінено bottom на top
-                label.style.transform = "translateY(-50%)";
-                label.style.color = "black"; 
-                label.style.fontSize = "14px";
-                label.style.fontWeight = "bold";
-                label.style.backgroundColor = "yellow";
-                label.style.border = "1px solid red";
-
                 progressLabels.appendChild(label);
             });
 
