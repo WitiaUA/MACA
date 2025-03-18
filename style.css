@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif;
 
-  background-image: url('https://github.com/WitiaUA/MACA/blob/main/images(1).jpg');
+  background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
   background-size: cover; /* для того, щоб картинка покривала весь екран */
   background-position: center center; /* для центрування картинки */
   background-repeat: no-repeat; /* щоб зображення не повторювалося */
