@@ -21,23 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
             progressLabels.innerHTML = "";
 
             // Додавання міток до шкали
-            labelValues.forEach((value, index) => {
+            labelValues.forEach(value => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
                 label.style.bottom = `${position}%`;
-
-                // Перевірка на перетин міток
-                if (index > 0) {
-                    const prevLabel = progressLabels.lastChild;
-                    const prevRect = prevLabel.getBoundingClientRect();
-                    const currentRect = label.getBoundingClientRect();
-                    if (currentRect.top - prevRect.bottom < 5) {
-                        label.style.display = "none";
-                    }
-                }
 
                 progressLabels.appendChild(label);
             });
