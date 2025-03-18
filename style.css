@@ -56,9 +56,15 @@ body {
 }
 
 .progress-label {
-    position: relative;
-    transform: translateY(-50%);
+    position: absolute;
+    left: -40px; /* Відстань від шкали */
+    transform: translateY(50%); /* Зміщення, щоб не було накладання */
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap; /* Запобігає переносу тексту */
 }
+
 
 /* Додав рисочки поруч із мітками */
 .progress-labels div {
