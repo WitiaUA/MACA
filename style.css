@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Повна висота екрану */
+
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
     background-repeat: no-repeat; /* Забороняємо повторення фону */
     background-position: center center; /* Центруємо фон */
