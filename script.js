@@ -12,25 +12,24 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             let currentProgress = data.currentValue;
-            let maxProgress = labelValues[0]; // Найбільше значення шкали
+            let maxProgress = data.maxValue;
 
-            // Очищення шкали
+            // Оновлення висоти шкали прогресу
+            progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
+
+            // Очищення попередніх міток
             progressLabels.innerHTML = "";
 
-            // Додавання міток до шкали з правильним розташуванням
+            // Додавання міток до шкали
             labelValues.forEach(value => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                let position = getPosition(value);
-                label.style.bottom = position + "%"; // Встановлюємо правильну позицію
+                let position = (value / maxProgress) * 100;
 
                 progressLabels.appendChild(label);
             });
-
-            // Оновлення висоти шкали прогресу відповідно до значень
-            progressBar.style.height = getPosition(currentProgress) + "%";
 
             // Оновлення списку винагород
             rewardsList.innerHTML = "";
@@ -47,24 +46,41 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 
-    // Функція для визначення позиції у відсотках
-    function getPosition(value) {
-        if (value >= labelValues[0]) return 100; // Верхня межа
-        if (value <= labelValues[labelValues.length - 1]) return 0; // Нижня межа
 
-        let minIndex = labelValues.findIndex(v => v <= value);
-        let maxIndex = minIndex - 1;
+     // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
 
-        if (minIndex <= 0) return 100;
-        if (maxIndex < 0) return 0;
+     const donateButton = document.getElementById("donate-enz");
+ 
+    if (donateButton) {
+ 
 
-        let minVal = labelValues[minIndex];
-        let maxVal = labelValues[maxIndex];
+        console.log("Знайдено кнопку пожертви в е-нз.");
+ 
+        donateButton.addEventListener("click", function (event) {
+ 
 
-        let minHeight = (minIndex / (labelValues.length - 1)) * 100;
-        let maxHeight = (maxIndex / (labelValues.length - 1)) * 100;
+            event.preventDefault();
+ 
 
-        let relativePosition = (value - minVal) / (maxVal - minVal);
-        return minHeight + relativePosition * (maxHeight - minHeight);
+            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
+ 
+
+            if (confirmDonate) {
+ 
+
+                window.location.href = "https://t.me/quadrobank_bot?start";
+ 
+
+            }
+ 
+        });
+ 
+
+    } else {
+ 
+
+        console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
+ 
+
     }
 });
