@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                let position = (1 - value / maxProgress) * 100;
-                label.style.top = `${position}%`;
-                label.style.transform = "translateY(-50%)"; // Центрує мітку по осі Y
+                let position = (value / maxProgress) * 100;
+                label.style.bottom = `${position}%`; // Прив'язка до шкали
+                label.style.position = "absolute";
 
                 progressLabels.appendChild(label);
             });
