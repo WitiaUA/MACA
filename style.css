@@ -5,10 +5,14 @@ body {
     padding: 0;
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
     background-repeat: no-repeat; /* Забороняємо повторення фону */
-
     background-position: top center; /* Центруємо фон по ширині і ставимо його зверху */
+    background-size: cover; /* Покриває весь екран */
     height: 100vh; /* Висота сторінки на всю висоту вікна */
+    display: flex; /* Додаємо flex для центровання контенту */
+    justify-content: center; /* Центруємо по горизонталі */
+    align-items: flex-start; /* Центруємо по вертикалі на початку (вгорі) */
     text-align: center; /* Центруємо текст по горизонталі */
+    padding-top: 50px; /* Відступ для заголовка від верхнього краю */
 }
 
 /* Заголовок */
@@ -17,6 +21,7 @@ body {
     align-items: center;
     gap: 10px;
     color: white;
+    justify-content: center; /* Центруємо заголовок по горизонталі */
 }
 
 /* Контейнер */
