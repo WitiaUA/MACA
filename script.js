@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const rewardsList = document.getElementById("rewards-list");
 
     const labelValues = [
-        20000, 18000, 16000, 15000, 14000, 13000, 12000, 11000, 10000, 9000, 8000, 6969,
+        20000, 18000, 16000, 15000, 14000, 13000, 12000, 11000, 10000, 9000, 8000, 6969, 
         6000, 4949, 4500, 4000, 3500, 3000, 2500, 2000, 1750, 1488, 1250, 1000, 500, 250, 100, 49
     ];
 
@@ -14,28 +14,30 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentProgress = data.currentValue;
             let maxProgress = data.maxValue;
 
-            // Встановлюємо висоту шкали на 100% висоти контейнера
-            progressBar.style.height = `100%`;
+            // Оновлення висоти шкали прогресу
+            progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
 
-            // Створюємо і додаємо внутрішній блок заповнення шкали
-            const progressFill = document.createElement("div");
-            progressFill.classList.add("progress-fill");
-            progressFill.style.height = `${(currentProgress / maxProgress) * 100}%`;
-            progressBar.innerHTML = "";
-            progressBar.appendChild(progressFill);
-
-            // Очищаємо попередні мітки
+            // Очищення попередніх міток
             progressLabels.innerHTML = "";
 
-            // Додаємо мітки пропорційно до реальних значень
-            labelValues.forEach((value) => {
+            // Додавання міток до шкали
+            labelValues.forEach((value, index) => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                // Розрахунок позиції мітки відносно maxProgress
                 let position = (1 - value / maxProgress) * 100;
-                label.style.top = `${position}%`;
+                label.style.bottom = `${position}%`;
+
+                // Перевірка на перетин міток
+                if (index > 0) {
+                    const prevLabel = progressLabels.lastChild;
+                    const prevRect = prevLabel.getBoundingClientRect();
+                    const currentRect = label.getBoundingClientRect();
+                    if (currentRect.top - prevRect.bottom < 5) {
+                        label.style.display = "none";
+                    }
+                }
 
                 progressLabels.appendChild(label);
             });
@@ -45,20 +47,13 @@ document.addEventListener("DOMContentLoaded", function () {
             Object.entries(data.rewards).forEach(([value, reward]) => {
                 let listItem = document.createElement("li");
                 listItem.textContent = `${value}: ${reward}`;
+                if (currentProgress >= value) {
+                    listItem.classList.add("received");
+                }
                 rewardsList.appendChild(listItem);
             });
-        });
 
-    // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
-    const donateButtons = document.querySelectorAll(".donate-enz");
-    donateButtons.forEach((button) => {
-        console.log("Знайдено кнопку пожертви.");
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
-            if (confirmDonate) {
-                window.location.href = "https://t.me/quadrobank_bot?start";
-            }
-        });
-    });
+            console.log("Мітки додано:", progressLabels.innerHTML);
+        })
+        .catch(error => console.error("Помилка завантаження даних:", error));
 });
