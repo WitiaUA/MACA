@@ -3,14 +3,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
-    
-    /* Встановлення фону */
+    height: 100vh; /* Повна висота екрану */
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
-    background-repeat: no-repeat; /* щоб зображення не повторювалося */
-    background-size: 50%; /* Зменшити розмір фону */
-    background-position: center center; /* Центрування фону */
-    height: 100vh; /* Задаємо висоту в 100% від висоти вікна браузера */
+    background-repeat: no-repeat; /* Забороняємо повторення фону */
+    background-position: center center; /* Центруємо фон */
+    display: flex; /* Використовуємо flexbox для центрування */
+    justify-content: center; /* Горизонтальне центрування */
+    align-items: center; /* Вертикальне центрування */
+    text-align: center; /* Центрування тексту */
 }
 
 /* Заголовок */
