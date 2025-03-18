@@ -12,25 +12,25 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             let currentProgress = data.currentValue;
-            let maxProgress = labelValues[0]; // Найбільше значення міток як верхня межа
+            let maxProgress = labelValues[0]; // Найбільше значення шкали
 
-            // Оновлення висоти шкали прогресу
-            progressBar.style.height = getProgressHeight(currentProgress) + "%";
-
-            // Очищення попередніх міток
+            // Очищення шкали
             progressLabels.innerHTML = "";
 
-            // Додавання міток до шкали
-            labelValues.forEach((value, index) => {
+            // Додавання міток до шкали з правильним розташуванням
+            labelValues.forEach(value => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                let position = (index / (labelValues.length - 1)) * 100;
-                label.style.bottom = position + "%";
+                let position = getPosition(value);
+                label.style.bottom = position + "%"; // Встановлюємо правильну позицію
 
                 progressLabels.appendChild(label);
             });
+
+            // Оновлення висоти шкали прогресу відповідно до значень
+            progressBar.style.height = getPosition(currentProgress) + "%";
 
             // Оновлення списку винагород
             rewardsList.innerHTML = "";
@@ -47,23 +47,24 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 
-    // Функція для коригування висоти заповнення
-    function getProgressHeight(value) {
-        if (value >= labelValues[0]) return 100;
-        if (value <= labelValues[labelValues.length - 1]) return 0;
+    // Функція для визначення позиції у відсотках
+    function getPosition(value) {
+        if (value >= labelValues[0]) return 100; // Верхня межа
+        if (value <= labelValues[labelValues.length - 1]) return 0; // Нижня межа
 
-        for (let i = 0; i < labelValues.length - 1; i++) {
-            if (value >= labelValues[i + 1] && value <= labelValues[i]) {
-                let minVal = labelValues[i + 1];
-                let maxVal = labelValues[i];
+        let minIndex = labelValues.findIndex(v => v <= value);
+        let maxIndex = minIndex - 1;
 
-                let minHeight = (i + 1) / (labelValues.length - 1) * 100;
-                let maxHeight = i / (labelValues.length - 1) * 100;
+        if (minIndex <= 0) return 100;
+        if (maxIndex < 0) return 0;
 
-                let relativePosition = (value - minVal) / (maxVal - minVal);
-                return minHeight + relativePosition * (maxHeight - minHeight);
-            }
-        }
-        return 0;
+        let minVal = labelValues[minIndex];
+        let maxVal = labelValues[maxIndex];
+
+        let minHeight = (minIndex / (labelValues.length - 1)) * 100;
+        let maxHeight = (maxIndex / (labelValues.length - 1)) * 100;
+
+        let relativePosition = (value - minVal) / (maxVal - minVal);
+        return minHeight + relativePosition * (maxHeight - minHeight);
     }
 });
