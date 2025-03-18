@@ -14,8 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentProgress = data.currentValue;
             let maxProgress = data.maxValue;
 
-            // Оновлення висоти шкали прогресу
-            progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
+            // Завжди 100% висоти шкали
+            progressBar.style.height = `100%`;
+
+            // Заповнення бару відповідно до прогресу
+            const progressFill = document.createElement("div");
+            progressFill.classList.add("progress-fill");
+            progressFill.style.height = `${(currentProgress / maxProgress) * 100}%`;
+            progressBar.appendChild(progressFill);
 
             // Очищення попередніх міток
             progressLabels.innerHTML = "";
