@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                let position = (value / maxProgress) * 100;
-                label.style.bottom = `${position}%`; // Прив'язка до шкали
+                let position = (1 - value / maxProgress) * 100;
+                label.style.top = `calc(${position}% - 10px)`; // Вирівнюємо чітко по мітці
                 label.style.position = "absolute";
 
                 progressLabels.appendChild(label);
