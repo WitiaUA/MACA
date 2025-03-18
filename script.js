@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Очищаємо попередні мітки
             progressLabels.innerHTML = "";
 
-            // Додаємо мітки рівномірно за значеннями
+            // Додаємо мітки пропорційно до реальних значень
             labelValues.forEach((value) => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                // Розміщуємо мітки пропорційно до їхнього значення відносно maxProgress
-                let position = (1 - value / Math.max(...labelValues)) * 100;
+                // Розрахунок позиції мітки відносно maxProgress
+                let position = (1 - value / maxProgress) * 100;
                 label.style.top = `${position}%`;
 
                 progressLabels.appendChild(label);
@@ -50,17 +50,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
-    const donateButton = document.getElementById("donate-enz");
-    if (donateButton) {
-        console.log("Знайдено кнопку пожертви в е-нз.");
-        donateButton.addEventListener("click", function (event) {
+    const donateButtons = document.querySelectorAll(".donate-enz");
+    donateButtons.forEach((button) => {
+        console.log("Знайдено кнопку пожертви.");
+        button.addEventListener("click", function (event) {
             event.preventDefault();
             let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
             if (confirmDonate) {
                 window.location.href = "https://t.me/quadrobank_bot?start";
             }
         });
-    } else {
-        console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
-    }
+    });
 });
