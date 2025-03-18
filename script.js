@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             let currentProgress = data.currentValue;
-            let maxProgress = data.maxValue;
+            let maxProgress = labelValues[0]; // Найбільше значення міток як верхня межа
 
             // Оновлення висоти шкали прогресу
             progressBar.style.height = getProgressHeight(currentProgress) + "%";
@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
             progressLabels.innerHTML = "";
 
             // Додавання міток до шкали
-            labelValues.forEach(value => {
+            labelValues.forEach((value, index) => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
-                let position = getProgressHeight(value);
+                let position = (index / (labelValues.length - 1)) * 100;
                 label.style.bottom = position + "%";
 
                 progressLabels.appendChild(label);
@@ -47,10 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 
-    // Функція для коригування висоти шкали
+    // Функція для коригування висоти заповнення
     function getProgressHeight(value) {
-        if (value >= labelValues[0]) return 100; // Найвище значення = 100%
-        if (value <= labelValues[labelValues.length - 1]) return 0; // Найнижче значення = 0%
+        if (value >= labelValues[0]) return 100;
+        if (value <= labelValues[labelValues.length - 1]) return 0;
 
         for (let i = 0; i < labelValues.length - 1; i++) {
             if (value >= labelValues[i + 1] && value <= labelValues[i]) {
@@ -64,22 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return minHeight + relativePosition * (maxHeight - minHeight);
             }
         }
-        return 0; // Якщо значення не знайдено (теоретично неможливо)
-    }
-
-    // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
-    const donateButton = document.getElementById("donate-enz");
-
-    if (donateButton) {
-        console.log("Знайдено кнопку пожертви в е-нз.");
-        donateButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
-            if (confirmDonate) {
-                window.location.href = "https://t.me/quadrobank_bot?start";
-            }
-        });
-    } else {
-        console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
+        return 0;
     }
 });
