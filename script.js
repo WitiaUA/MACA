@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
-                label.style.bottom = `${position}%`;
+                label.style.top = `${position}%`;
+                label.style.transform = "translateY(-50%)"; // Центрує мітку по осі Y
 
                 progressLabels.appendChild(label);
             });
