@@ -3,14 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
     background-repeat: no-repeat; /* Забороняємо повторення фону */
-    background-position: center center; /* Центруємо фон */
-    display: flex; /* Використовуємо flexbox для центрування */
-    justify-content: center; /* Горизонтальне центрування */
-    align-items: center; /* Вертикальне центрування */
-    text-align: center; /* Центрування тексту */
+    background-position: top center; /* Центруємо фон по ширині і ставимо його зверху */
+
+    text-align: center; /* Центруємо текст по горизонталі */
 }
 
 /* Заголовок */
