@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const rewardsList = document.getElementById("rewards-list");
 
     const labelValues = [
-        20000, 18000, 16000, 15000, 14000, 13000, 12000, 11000, 10000, 9000, 8000, 6969, 
-        6000, 4949, 4500, 4000, 3500, 3000, 2500, 2000, 1750, 1488, 1250, 1000, 500, 250, 100, 49
+        20000, 19000, 18000, 17000, 16000, 15000, 14000, 13000, 12000, 11000, 10000,
+        9000, 8000, 7000, 6000, 5000, 4000, 3000, 2000, 1000, 0
     ];
 
     fetch("data.json")
@@ -20,14 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
             // Очищення попередніх міток
             progressLabels.innerHTML = "";
 
-            // Додавання міток до шкали
+            // Додавання міток всередині шкали
             labelValues.forEach(value => {
                 let label = document.createElement("div");
                 label.classList.add("progress-label");
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
-                label.style.top = `calc(${position}% - 10px)`; // Вирівнюємо чітко по мітці
+                label.style.top = `calc(${position}% - 7px)`; // Тонке вирівнювання
+                label.style.left = "20%"; // Мітки всередині шкали
                 label.style.position = "absolute";
 
                 progressLabels.appendChild(label);
