@@ -6,7 +6,7 @@ body {
     text-align: center;
 
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
-    background-size: 50%; /* Зменшуємо розмір картинки до 50% */
+
     background-repeat: no-repeat; /* щоб зображення не повторювалося */
 
    
