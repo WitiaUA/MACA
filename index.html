@@ -51,6 +51,7 @@
 
 <!-- Карусель донаторів -->
 <div class="donor-carousel-container">
+    <h2>Розробники</h2>
     <div class="donor-carousel" id="donor-carousel"></div>
 </div>
 
@@ -61,19 +62,32 @@
 <style>
 body {
     overflow-y: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 20px;
 }
 
 .donor-carousel-container {
     width: 100%;
     overflow-x: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background: #f0f0f0;
     padding: 20px 0;
     border-top: 2px solid #ddd;
     scroll-snap-type: x mandatory;
     margin-top: 20px;
     margin-bottom: 100px; /* Додали більше простору під каруселлю */
+}
+
+.donor-carousel-container h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
 }
 
 .donor-carousel {
