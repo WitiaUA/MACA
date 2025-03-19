@@ -28,6 +28,12 @@ body {
     margin-top: 0; /* Убираємо зайві відступи */
 }
 
+/* Розміщення зображень */
+.hear img {
+    display: block; /* Перетворюємо на блочний елемент, щоб зображення йшли в окремі рядки */
+    margin: 0 auto 20px auto; /* Центруємо зображення і додаємо відступи між ними */
+}
+
 /* Контейнер для прогрес-бара та інших елементів */
 .container {
     display: flex;
@@ -121,7 +127,6 @@ body {
 .rewards-container {
     margin-top: 30px;
     text-align: center;
-    color: white;
 }
 
 .rewards-container h2 {
@@ -132,15 +137,14 @@ body {
 #rewards-list {
     list-style: none;
     padding: 0;
-    color: white;
 }
 
 #rewards-list li {
     text-align: center;
     margin-top: 15px;
     padding: 0;
-    text-shadow: 0px 0px 0px #333333, 1px 1px 0px rgba(0,0,0,0.15);
-    color: #FFFFFF;
+    text-shadow: 0px 0px 0px #FFFFFF, 1px 1px 0px rgba(0,0,0,0.15);
+    color: #333333;
     list-style-type: none;
 }
 
