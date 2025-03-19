@@ -8,5 +8,22 @@
         "6969": "Мемний подарунок",
         "5000": "Секретний контент",
         "1000": "Подяка на сайті"
-    }
+    },
+    "developers": [
+        {
+            "nickname": "Notch",
+            "name": "Маркус Перссон",
+            "link": "https://example.com/notch"
+        },
+        {
+            "nickname": "jeb_",
+            "name": "Єнс Бергенстен",
+            "link": "https://example.com/jeb"
+        },
+        {
+            "nickname": "Dinnerbone",
+            "name": "Натан Адамс",
+            "link": "https://example.com/dinnerbone"
+        }
+    ]
 }
