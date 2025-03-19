@@ -38,13 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 let position = (1 - value / maxProgress) * 100;
                 label.style.position = "absolute";
                 label.style.top = `${position}%`;
-                label.style.left = "5px";
-                label.style.width = "calc(100% - 10px)";
-                label.style.textAlign = "left";
+                label.style.left = "50%";
+                label.style.transform = "translate(-50%, -50%)";
+                label.style.width = "fit-content";
+                label.style.textAlign = "center";
                 label.style.color = "#000";
-                label.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
-                label.style.padding = "2px 0";
-                label.style.boxShadow = "0 0 3px rgba(0, 0, 0, 0.5)";
+                label.style.backgroundColor = "transparent";
+                label.style.padding = "0";
+                label.style.boxShadow = "none";
 
                 progressContainer.appendChild(label);
             });
