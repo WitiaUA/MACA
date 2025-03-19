@@ -35,17 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
-                label.style.top = `${position}%`;
                 label.style.position = "absolute";
-                label.style.left = "0"; // Вирівнюємо по лівому краю
+                label.style.top = `${position}%`;
+                label.style.left = "0";
                 label.style.width = "100%";
-                label.style.textAlign = "center"; // Центруємо всередині
+                label.style.textAlign = "center";
                 label.style.color = "#000";
-                label.style.backgroundColor = "rgba(255, 255, 255, 0.7)"; // Фон для видимості всередині
+                label.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
                 label.style.padding = "2px 0";
-                label.style.boxShadow = "0 0 3px rgba(0, 0, 0, 0.5)"; // Легка тінь для читабельності
+                label.style.boxShadow = "0 0 3px rgba(0, 0, 0, 0.5)";
 
-                progressBar.appendChild(label); // Додаємо мітки всередину самої шкали
+                progressLabels.appendChild(label); // Відновлюємо додавання до progressLabels
             });
 
             // Оновлення списку винагород
