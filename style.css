@@ -1,4 +1,4 @@
-/* Загальні стилі */
+/* Основні стилі */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -14,39 +14,34 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 /* Заголовок */
 .hear {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 10px;
     color: white;
+    justify-content: center;
     position: relative;
     margin-top: 0;
 }
 
-/* Логотип */
+/* Зображення */
 .hear img {
     display: block;
-    margin-bottom: 10px;
+    margin: 0 auto 20px auto;
 }
 
-/* Центруємо золото */
-.gold-image {
-    display: block;
-    margin: 10px auto 20px auto;
-}
-
-/* Контейнер для прогрес-бара */
+/* Контейнер для шкали і кнопок */
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     gap: 20px;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 /* Прогрес-бар */
@@ -57,21 +52,25 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     border: 2px solid #ccc;
+    overflow: visible;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
 }
 
-/* Шкала прогресу */
+/* Заповнення шкали по контуру */
 .progress-bar {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: gold;
+    background: linear-gradient(to top, gold, #ffdf6b);
     height: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transition: height 0.5s ease-out;
 }
 
-/* Мітки для шкали */
+/* Мітки */
 .progress-labels {
     position: absolute;
     left: -50px;
@@ -88,6 +87,25 @@ body {
 .progress-label {
     position: relative;
     transform: translateY(-50%);
+}
+
+/* 0% мітка */
+.zero-label {
+    color: #fff;
+    font-weight: bold;
+    background-color: #333;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Рисочки біля міток */
+.progress-labels div::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: black;
+    margin-left: 5px;
 }
 
 /* Блок з кнопками */
@@ -109,6 +127,7 @@ body {
     border-radius: 5px;
     width: 200px;
     margin: 5px auto;
+    transition: 0.3s ease;
 }
 
 .donate-button {
@@ -119,6 +138,15 @@ body {
     background-color: #0088cc;
 }
 
+/* Анімація при наведенні на кнопки */
+.donate-button:hover {
+    background-color: #ffdf6b;
+}
+
+.telegram-button:hover {
+    background-color: #006699;
+}
+
 /* Список нагород */
 .rewards-container {
     margin-top: 30px;
@@ -126,6 +154,7 @@ body {
     color: white;
 }
 
+/* Заголовок винагород */
 .rewards-container h2 {
     margin-bottom: 10px;
 }
@@ -137,11 +166,11 @@ body {
     color: white;
 }
 
+/* Нагороди */
 #rewards-list li {
     text-align: center;
     margin-top: 15px;
     padding: 0;
-    text-shadow: 0px 0px 0px #333333, 1px 1px 0px rgba(0, 0, 0, 0.15);
     color: #FFFFFF;
     list-style-type: none;
 }
