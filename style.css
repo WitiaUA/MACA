@@ -131,6 +131,7 @@ body {
 #rewards-list {
     list-style: none;
     padding: 0;
+    color: #FFFFFF;
 }
 
 #rewards-list li {
