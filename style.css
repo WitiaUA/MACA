@@ -4,9 +4,11 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
-    background-repeat: no-repeat; /* Забороняємо повторення фону */
+    background-repeat: repeat-y; /* Фон буде повторюватися тільки по вертикалі */
     background-position: top center; /* Центруємо фон по ширині і ставимо його зверху */
-    background-size: cover; /* Покриває весь екран */
+    background-size: auto; /* Фон не буде змінюватися по розміру */
+    background-attachment: fixed; /* Фон залишається сталим при прокручуванні */
+    height: 100vh; /* Висота сторінки на всю висоту вікна */
     text-align: center; /* Центруємо текст по горизонталі */
     display: flex; /* Додаємо flex для центровання контенту */
     flex-direction: column; /* Центруємо всі елементи вертикально */
