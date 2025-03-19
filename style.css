@@ -20,6 +20,7 @@ body {
 /* Заголовок */
 .hear {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     color: white;
@@ -28,13 +29,18 @@ body {
     margin-top: 0;
 }
 
-/* Розміщення зображень */
-.hear img {
+/* Логотип */
+.hear img:first-of-type {
     display: block;
-    margin: 0 auto 20px auto;
+    margin-bottom: 10px;
 }
 
-/* Контейнер для прогрес-бара та інших елементів */
+/* Золото під прогресом */
+.hear img:nth-of-type(2) {
+    margin-top: 10px;
+}
+
+/* Контейнер шкали */
 .container {
     display: flex;
     align-items: center;
@@ -44,7 +50,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Прогрес бар */
+/* Прогрес-бар */
 .progress-container {
     position: relative;
     width: 80px;
@@ -52,23 +58,26 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     border: 2px solid #ccc;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    margin-top: 20px;
 }
 
-/* Заповнення шкали */
+/* Заповнення по контуру */
 .progress-bar {
     position: absolute;
     bottom: 0;
     width: 100%;
+    background: linear-gradient(to top, gold, #ffdf6b);
     height: 0;
-    background: gold;
-    transition: height 0.5s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transition: height 0.5s ease-out;
 }
 
-/* Мітки */
+/* Мітки шкали */
 .progress-labels {
     position: absolute;
     left: -50px;
@@ -83,20 +92,17 @@ body {
     color: black;
 }
 
-/* Окремі мітки */
-.progress-label {
-    position: relative;
-    transform: translateY(-50%);
-}
-
-/* СТИЛЬ ДЛЯ "0" */
-.progress-label:first-child {
+/* Виділяємо 0 */
+.progress-labels div:nth-last-child(1) {
     color: #fff;
     font-weight: bold;
-    text-shadow: 0 0 5px #000, 0 0 10px #000;
+    background-color: #333;
+    padding: 3px 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-/* Додав рисочки поруч із мітками */
+/* Додавання рисочок поруч із мітками */
 .progress-labels div {
     display: flex;
     align-items: center;
@@ -112,17 +118,18 @@ body {
     margin-left: 5px;
 }
 
-/* Блок з кнопками */
+/* Кнопки по центру шкали */
 .actions {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-left: 20px;
     justify-content: center;
+    height: 800px; /* Підганяємо по висоті шкали */
 }
 
-/* Кнопки */
-.donate-button,
-.telegram-button {
+/* Стилі кнопок */
+.donate-button, .telegram-button {
     display: block;
     padding: 15px 20px;
     text-align: center;
@@ -154,7 +161,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Виправлений список нагород */
+/* Список винагород */
 #rewards-list {
     list-style: none;
     padding: 0;
@@ -170,7 +177,7 @@ body {
     list-style-type: none;
 }
 
-/* Виконані нагороди */
+/* Виконані винагороди */
 .received {
     color: gold !important;
     font-weight: bold;
