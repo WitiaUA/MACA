@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
-                label.style.top = `${position}%`; // Точне позиціонування без зсуву
-                label.style.left = "50%"; // По центру всередині шкали
-                label.style.transform = "translateX(-50%)"; // Центрування по горизонталі
+                label.style.top = `${position}%`; // Точне позиціонування
                 label.style.position = "absolute";
-                label.style.color = "#000"; // Чорний текст для контрасту всередині
+                label.style.width = "100%"; // Вся ширина контейнера
+                label.style.textAlign = "center"; // Центрування тексту
+                label.style.color = "#000"; // Чорний текст
 
-                progressBar.appendChild(label); // Мітки всередині шкали
+                progressLabels.appendChild(label); // Повернули мітки в progressLabels
             });
 
             // Оновлення списку винагород
