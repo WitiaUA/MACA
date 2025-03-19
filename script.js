@@ -35,13 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
-                label.style.top = `${position}%`; // Точне позиціонування
+                label.style.top = `${position}%`;
                 label.style.position = "absolute";
-                label.style.width = "100%"; // Вся ширина контейнера
-                label.style.textAlign = "center"; // Центрування тексту
-                label.style.color = "#000"; // Чорний текст
+                label.style.left = "0"; // Вирівнюємо по лівому краю
+                label.style.width = "100%";
+                label.style.textAlign = "center"; // Центруємо всередині
+                label.style.color = "#000";
+                label.style.backgroundColor = "rgba(255, 255, 255, 0.7)"; // Фон для видимості всередині
+                label.style.padding = "2px 0";
+                label.style.boxShadow = "0 0 3px rgba(0, 0, 0, 0.5)"; // Легка тінь для читабельності
 
-                progressLabels.appendChild(label); // Повернули мітки в progressLabels
+                progressBar.appendChild(label); // Додаємо мітки всередину самої шкали
             });
 
             // Оновлення списку винагород
