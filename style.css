@@ -87,11 +87,17 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.3); /* Напівпрозорі цифри */
 }
 
-/* Виділяємо 0 */
+/* Напівпрозорі цифри на задньому плані */
+.progress-labels div {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Виділяємо 0 чіткіше */
 .progress-labels .zero-label {
     color: #fff;
     font-weight: bold;
@@ -101,42 +107,32 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-/* Додавання рисочок поруч із мітками */
-.progress-labels div {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-}
-
-/* Тонкі лінії на кожну тисячу */
-.progress-labels div::after {
-    content: "";
-    display: block;
+/* Кольорові позначки на ключових відмітках */
+.mark {
+    position: absolute;
+    left: -15px;
     width: 10px;
-    height: 1px; /* Тонка лінія */
-    background-color: rgba(0, 0, 0, 0.5);
-    margin-left: 5px;
+    height: 2px;
+    background-color: red;
 }
 
-/* Кольорові позначки для ключових міток */
-.progress-labels div[data-value="500"],
-.progress-labels div[data-value="1000"],
-.progress-labels div[data-value="2000"],
-.progress-labels div[data-value="4000"],
-.progress-labels div[data-value="8000"] {
-    color: #FF4500; /* Яскравий оранжевий */
-    font-weight: bold;
-    text-shadow: 0 0 8px rgba(255, 69, 0, 0.8);
+/* Тонкі лінії для кожної тисячі */
+.thin-line {
+    position: absolute;
+    left: -10px;
+    width: 5px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Кнопки по центру висоти шкали */
+/* Кнопки по центру шкали */
 .actions {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-left: 20px;
     justify-content: center;
-    height: 800px; /* Підганяємо по висоті шкали */
+    height: 800px;
 }
 
 /* Стилі кнопок */
