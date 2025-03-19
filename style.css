@@ -121,6 +121,7 @@ body {
 .rewards-container {
     margin-top: 30px;
     text-align: center;
+    color: white;
 }
 
 .rewards-container h2 {
@@ -131,7 +132,7 @@ body {
 #rewards-list {
     list-style: none;
     padding: 0;
-    color: #FFFFFF;
+    color: white;
 }
 
 #rewards-list li {
