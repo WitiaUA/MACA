@@ -44,7 +44,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Контейнер прогрес-бара */
+/* Прогрес бар */
 .progress-container {
     position: relative;
     width: 80px;
@@ -52,22 +52,20 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     border: 2px solid #ccc;
-    overflow: visible;
+    overflow: hidden;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
-/* Прогрес по контуру */
+/* Заповнення шкали */
 .progress-bar {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 0;
-    background: linear-gradient(to top, #FFD700, #FFA500);
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px #000;
+    background: gold;
+    transition: height 0.5s ease;
 }
 
 /* Мітки */
@@ -80,7 +78,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    background-color: transparent;
+    background-color: white;
     font-size: 14px;
     color: black;
 }
@@ -89,14 +87,13 @@ body {
 .progress-label {
     position: relative;
     transform: translateY(-50%);
-    color: #000;
 }
 
-/* Окремий стиль для "0" */
+/* СТИЛЬ ДЛЯ "0" */
 .progress-label:first-child {
     color: #fff;
     font-weight: bold;
-    text-shadow: 0 0 5px #000;
+    text-shadow: 0 0 5px #000, 0 0 10px #000;
 }
 
 /* Додав рисочки поруч із мітками */
