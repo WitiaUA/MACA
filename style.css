@@ -87,12 +87,13 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+    background-color: white;
     font-size: 14px;
-    color: rgba(0, 0, 0, 0.2);
+    color: black;
 }
 
 /* Виділяємо 0 */
-.progress-labels div:first-child {
+.progress-labels div:nth-last-child(1) {
     color: #fff;
     font-weight: bold;
     background-color: #333;
@@ -101,13 +102,20 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-/* Кольорові мітки на ключових значеннях */
-.progress-mark {
-    position: absolute;
-    width: 100%;
+/* Додавання рисочок поруч із мітками */
+.progress-labels div {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+}
+
+.progress-labels div::after {
+    content: "";
+    display: block;
+    width: 10px;
     height: 2px;
-    background-color: red;
-    left: 0;
+    background-color: black;
+    margin-left: 5px;
 }
 
 /* Кнопки по центру шкали */
@@ -116,4 +124,64 @@ body {
     flex-direction: column;
     gap: 15px;
     margin-left: 20px;
-  
+    justify-content: center;
+    height: 800px; /* Підганяємо по висоті шкали */
+}
+
+/* Стилі кнопок */
+.donate-button, .telegram-button {
+    display: block;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    width: 200px;
+    margin: 5px auto;
+}
+
+.donate-button {
+    background-color: gold;
+}
+
+.telegram-button {
+    background-color: #0088cc;
+}
+
+/* Список нагород */
+.rewards-container {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+}
+
+.rewards-container h2 {
+    margin-bottom: 10px;
+}
+
+/* Список винагород */
+#rewards-list {
+    list-style: none;
+    padding: 0;
+    color: white;
+}
+
+#rewards-list li {
+    text-align: center;
+    margin-top: 15px;
+    padding: 0;
+    text-shadow: 0px 0px 0px #333333, 1px 1px 0px rgba(0, 0, 0, 0.15);
+    color: #FFFFFF;
+    list-style-type: none;
+}
+
+/* Виконані винагороди */
+.received {
+    color: gold !important;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px gold;
+    padding: 5px;
+    border-radius: 5px;
+}
