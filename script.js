@@ -72,48 +72,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Логіка для кнопки пожертви (тільки якщо вона є на сторінці)
-    const donateButton = document.getElementById("donate-enz");
+
+     const donateButton = document.getElementById("donate-enz");
+ 
     if (donateButton) {
+ 
         console.log("Знайдено кнопку пожертви в е-нз.");
+ 
         donateButton.addEventListener("click", function (event) {
+ 
+
             event.preventDefault();
+ 
+
             let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
+ 
             if (confirmDonate) {
-                window.location.href = "https://t.me/quadrobank_bot?start";
+            window.location.href = "https://t.me/quadrobank_bot?start";
+ 
             }
-        });
+         });
+ 
     } else {
-        console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
-    }
-
+         console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
+     }
     updateProgress();
-
-
-    // Логіка каруселі донаторів
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            const carousel = document.getElementById('donor-carousel');
-            data.developers.forEach(dev => {
-                const slide = document.createElement('div');
-                slide.classList.add('donor-slide');
-                slide.innerHTML = `
-                    <a href="${dev.link}" target="_blank">
-                        <img src="https://crafatar.com/avatars/${dev.nickname}" alt="${dev.name}">
-                        <p>${dev.name}</p>
-                    </a>
-                `;
-                carousel.appendChild(slide);
-            });
-        });
-
-    let currentSlide = 0;
-    function showNextSlide() {
-        const slides = document.querySelectorAll('.donor-slide');
-        currentSlide = (currentSlide + 1) % slides.length;
-        const offset = -currentSlide * (slides[0].offsetWidth + 10);
-        slides.forEach(slide => slide.style.transform = `translateX(${offset}px)`);
-    }
-
-    setInterval(showNextSlide, 3000);
+ 
 });
