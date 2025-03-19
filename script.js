@@ -1,54 +1,66 @@
-// Прогрес
-const progressBar = document.querySelector('.progress-bar');
-const rewardsList = document.getElementById('rewards-list');
+// Завантажуємо дані з data.json
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        const maxValue = data.maxValue;
+        const currentValue = data.currentValue;
+        const rewards = data.rewards;
 
-// Встановлюємо початковий прогрес (відсоток)
-let progress = 0;
-progressBar.style.height = `${progress}%`;
+        const progressBar = document.querySelector('.progress-bar');
+        const rewardsList = document.getElementById('rewards-list');
+        const labelsContainer = document.querySelector('.progress-labels');
 
-// Додаємо кольорові мітки (500, 1000, 2000, 4000, 8000)
-const keyMarks = [500, 1000, 2000, 4000, 8000];
-keyMarks.forEach(mark => {
-    const markDiv = document.createElement('div');
-    markDiv.className = 'mark';
-    markDiv.style.bottom = `${(mark / 8000) * 100}%`;
-    document.querySelector('.progress-container').appendChild(markDiv);
-});
+        // Встановлюємо висоту прогрес-бару відповідно до поточного значення
+        const progressPercent = (currentValue / maxValue) * 100;
+        progressBar.style.height = `${progressPercent}%`;
 
-// Додаємо тонкі лінії на кожну тисячу
-for (let i = 1000; i < 8000; i += 1000) {
-    const lineDiv = document.createElement('div');
-    lineDiv.className = 'thin-line';
-    lineDiv.style.bottom = `${(i / 8000) * 100}%`;
-    document.querySelector('.progress-container').appendChild(lineDiv);
-}
+        // Додаємо мітки шкали
+        for (let i = 0; i <= maxValue; i += 1000) {
+            const label = document.createElement('div');
+            label.textContent = i;
+            label.style.opacity = "0.4";
+            label.style.position = "absolute";
+            label.style.bottom = `${(i / maxValue) * 100}%`;
+            labelsContainer.appendChild(label);
 
-// Оновлення прогресу
-function updateProgress(amount) {
-    progress += amount;
-    if (progress > 8000) progress = 8000;
-    const percentage = (progress / 8000) * 100;
-    progressBar.style.height = `${percentage}%`;
+            // Додаємо кольорові смужки на ключові мітки
+            if ([500, 1000, 2000, 4000, 8000].includes(i)) {
+                const mark = document.createElement('div');
+                mark.classList.add('progress-mark');
+                mark.style.position = "absolute";
+                mark.style.width = "100%";
+                mark.style.height = "2px";
+                mark.style.backgroundColor = "red";
+                mark.style.bottom = `${(i / maxValue) * 100}%`;
+                labelsContainer.appendChild(mark);
+            }
+        }
 
-    // Додаємо перевірку та підсвічування нагород
-    const rewards = [
-        { value: 500, text: "🏅 Досягнуто 500!" },
-        { value: 1000, text: "🎉 Досягнуто 1000!" },
-        { value: 2000, text: "🥳 Вау, 2000!" },
-        { value: 4000, text: "🔥 Півдороги — 4000!" },
-        { value: 8000, text: "🏆 Ціль досягнуто — 8000!" }
-    ];
-
-    rewards.forEach(reward => {
-        if (progress >= reward.value && !document.querySelector(`#reward-${reward.value}`)) {
+        // Показуємо список винагород
+        for (const [value, reward] of Object.entries(rewards)) {
             const rewardItem = document.createElement('li');
-            rewardItem.id = `reward-${reward.value}`;
-            rewardItem.textContent = reward.text;
-            rewardItem.classList.add('received');
+            rewardItem.textContent = `${value} — ${reward}`;
+            if (currentValue >= value) rewardItem.classList.add('received');
             rewardsList.appendChild(rewardItem);
         }
-    });
-}
 
-// Прив'язка до кнопок
-document.querySelector('.donate-button').addEventListener('click', () => updateProgress(500));
+        
+    if (donateButton) {
+        console.log("Знайдено кнопку пожертви в е-нз.");
+        donateButton.addEventListener("click", function (event) {
+            event.preventDefault();
+           let confirmDonate = confirm("Щоб здійснити пожертву, введіть команду /pay Maliyo 123 у телеграм-бота. Перейти до нього?");
+            if (confirmDonate) {
+               window.location.href = "https://t.me/quadrobank_bot?start";
+            }
+        });
+
+    } else {
+       console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
+ 
+
+    }
+});
+
+    })
+    .catch(error => console.error('Помилка завантаження даних:', error));
