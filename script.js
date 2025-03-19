@@ -1,72 +1,66 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const progressBar = document.querySelector(".progress-bar");
-    const progressContainer = document.querySelector(".progress-container");
     const rewardsList = document.getElementById("rewards-list");
 
-    const labelValues = [
-        20000, 19000, 18000, 17000, 16000, 15000, 14000, 13000, 12000, 11000, 10000,
-        9000, 8000, 7000, 6000, 5000, 4000, 3000, 2000, 1000, 0
+    // Сума цілі та поточна сума
+    const goalAmount = 8000;
+    let currentAmount = 0;
+
+    // Масив винагород
+    const rewards = [
+        { amount: 500, text: "Доступ до секретного чату" },
+        { amount: 1000, text: "Унікальна роль у Discord" },
+        { amount: 2000, text: "Іменна подяка на сайті" },
+        { amount: 4000, text: "Підписка на ексклюзивний контент" },
+        { amount: 8000, text: "Запрошення на закритий івент" },
     ];
 
-    fetch("data.json")
-        .then(response => response.json())
-        .then(data => {
-            let currentProgress = parseInt(data.currentValue);
-            let maxProgress = parseInt(data.maxValue);
+    // Оновлення прогрес-бара
+    function updateProgress() {
+        const progressPercent = (currentAmount / goalAmount) * 100;
+        progressBar.style.height = `${progressPercent}%`;
 
-            console.log("Поточний прогрес:", currentProgress);
-            console.log("Максимальний прогрес:", maxProgress);
-
-            if (isNaN(currentProgress) || isNaN(maxProgress) || maxProgress <= 0) {
-                console.error("Неправильні дані!", { currentProgress, maxProgress });
-                return;
+        // Відзначаємо винагороди
+        rewards.forEach((reward, index) => {
+            const rewardItem = rewardsList.children[index];
+            if (currentAmount >= reward.amount) {
+                rewardItem.classList.add("received");
             }
+        });
+    }
 
-            // Оновлення висоти шкали прогресу
-            const progressHeight = (currentProgress / maxProgress) * 100;
-            if (progressBar) {
-                progressBar.style.height = `${progressHeight}%`;
-                console.log(`Шкала оновлена до ${progressHeight}%`);
-            } else {
-                console.error("Елемент progress-bar не знайдено!");
-            }
+    // Додаємо мітки до шкали
+    const labelsContainer = document.querySelector(".progress-labels");
+    for (let i = 0; i <= goalAmount; i += 1000) {
+        const label = document.createElement("div");
+        label.textContent = i;
+        label.dataset.value = i;
 
-            // Очищення попередніх міток
-            progressContainer.querySelectorAll(".progress-label").forEach(label => label.remove());
+        // Перевірка на ключові мітки
+        if ([500, 1000, 2000, 4000, 8000].includes(i)) {
+            label.classList.add("highlight-label");
+        }
 
-            // Додавання міток всередині шкали
-            labelValues.forEach(value => {
-                let label = document.createElement("div");
-                label.classList.add("progress-label");
-                label.textContent = value;
+        labelsContainer.prepend(label);
+    }
 
-                let position = (1 - value / maxProgress) * 100;
-                label.style.position = "absolute";
-                label.style.top = `${position}%`;
-                label.style.left = "50%";
-                label.style.transform = "translate(-50%, -50%)";
-                label.style.width = "fit-content";
-                label.style.textAlign = "center";
-                label.style.color = "#000";
-                label.style.backgroundColor = "transparent";
-                label.style.padding = "0";
-                label.style.boxShadow = "none";
+    // Обробка кнопки пожертви
+    document.querySelector(".donate-button").addEventListener("click", () => {
+        const donation = parseInt(prompt("Введіть суму пожертви:", "100"), 10);
+        if (!isNaN(donation) && donation > 0) {
+            currentAmount += donation;
+            if (currentAmount > goalAmount) currentAmount = goalAmount;
+            updateProgress();
+        }
+    });
 
-                progressContainer.appendChild(label);
-            });
+    // Додаємо винагороди в список
+    rewards.forEach(reward => {
+        const rewardItem = document.createElement("li");
+        rewardItem.textContent = `${reward.amount} — ${reward.text}`;
+        rewardsList.appendChild(rewardItem);
+    });
 
-            // Оновлення списку винагород
-            rewardsList.innerHTML = "";
-            Object.entries(data.rewards).forEach(([value, reward]) => {
-                let listItem = document.createElement("li");
-                listItem.textContent = `${value}: ${reward}`;
-                if (currentProgress >= value) {
-                    listItem.classList.add("received");
-                }
-                rewardsList.appendChild(listItem);
-            });
-
-            console.log("Мітки додано:", progressContainer.innerHTML);
-        })
-        .catch(error => console.error("Помилка завантаження даних:", error));
+    // Ініціалізація прогресу
+    updateProgress();
 });
