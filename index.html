@@ -50,7 +50,94 @@
 </div>
 
 <!-- Карусель донаторів -->
-<div class="donor-carousel" id="donor-carousel"></div>
+<div class="donor-carousel-container">
+    <div class="donor-carousel" id="donor-carousel"></div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
+
+<style>
+.donor-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background: #f0f0f0;
+    padding: 20px 0;
+    border-top: 2px solid #ddd;
+}
+
+.donor-carousel {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.donor-slide {
+    flex: 0 0 auto;
+    width: 120px;
+    text-align: center;
+}
+
+.donor-slide img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.donor-slide p {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+            const carousel = document.getElementById("donor-carousel");
+            
+            if (!data.developers || data.developers.length === 0) {
+                console.error("Немає розробників у data.json");
+                return;
+            }
+
+            data.developers.forEach(dev => {
+                const slide = document.createElement("div");
+                slide.classList.add("donor-slide");
+                slide.innerHTML = `
+                    <a href="${dev.link}" target="_blank">
+                        <img src="https://crafatar.com/avatars/${dev.nickname}?size=100&overlay" alt="${dev.name}">
+                        <p>${dev.name}</p>
+                    </a>
+                `;
+                carousel.appendChild(slide);
+            });
+
+            startCarousel();
+        })
+        .catch(error => console.error("Помилка завантаження донаторів:", error));
+});
+
+function startCarousel() {
+    const carousel = document.getElementById("donor-carousel");
+    let scrollAmount = 0;
+    const slideWidth = 135; // ширина слайда + відступи
+    const scrollInterval = 3000;
+
+    setInterval(() => {
+        scrollAmount += slideWidth;
+        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+            scrollAmount = 0; // повертаємося на початок
+        }
+        carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    }, scrollInterval);
+}
+</script>
