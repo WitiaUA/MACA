@@ -96,6 +96,5 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
          console.log("Кнопки пожертви в е-нз немає на цій сторінці.");
      }
-    updateProgress();
  
 });
