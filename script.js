@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentProgress = data.currentValue;
             let maxProgress = data.maxValue;
 
-            // Оновлення висоти шкали прогресу
+            // Оновлення висоти шкали прогресу без округлення
             progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
 
             // Очищення попередніх міток
@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.textContent = value;
 
                 let position = (1 - value / maxProgress) * 100;
-                label.style.top = `calc(${position}% - 7px)`; // Тонке вирівнювання
+                label.style.top = `${position}%`; // Точне позиціонування без зсуву
                 label.style.left = "50%"; // По центру всередині шкали
                 label.style.transform = "translateX(-50%)"; // Центрування по горизонталі
                 label.style.position = "absolute";
                 label.style.color = "#000"; // Чорний текст для контрасту всередині
 
-                progressBar.appendChild(label); // Мітки тепер всередині самої шкали
+                progressBar.appendChild(label); // Мітки всередині шкали
             });
 
             // Оновлення списку винагород
