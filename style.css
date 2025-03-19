@@ -4,17 +4,17 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
-    background-repeat: repeat-y; /* Фон буде повторюватися тільки по вертикалі */
-    background-position: top center; /* Центруємо фон по ширині і ставимо його зверху */
-    background-size: auto; /* Фон не буде змінюватися по розміру */
-    background-attachment: fixed; /* Фон залишається сталим при прокручуванні */
-    height: 100vh; /* Висота сторінки на всю висоту вікна */
-    text-align: center; /* Центруємо текст по горизонталі */
-    display: flex; /* Додаємо flex для центровання контенту */
-    flex-direction: column; /* Центруємо всі елементи вертикально */
-    justify-content: flex-start; /* Вирівнюємо всі елементи від верхнього краю */
-    align-items: center; /* Центруємо по горизонталі */
-    padding-top: 50px; /* Відступ зверху для заголовка */
+    background-repeat: repeat-y;
+    background-position: top center;
+    background-size: auto;
+    background-attachment: fixed;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
 }
 
 /* Заголовок */
@@ -35,22 +35,22 @@ body {
     margin-bottom: 10px;
 }
 
-/* Зображення золота під прогресом */
+/* Золото під прогресом */
 .hear img:nth-of-type(2) {
     margin-top: 10px;
 }
 
-/* Контейнер для прогрес-бара та інших елементів */
+/* Контейнер шкали */
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    flex-wrap: wrap; /* Дозволяє елементам переноситися на новий рядок при малих екранах */
+    flex-wrap: wrap;
 }
 
-/* Прогрес-бар тепер стає нижче */
+/* Прогрес-бар */
 .progress-container {
     position: relative;
     width: 80px;
@@ -62,10 +62,10 @@ body {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    margin-top: 20px; /* Додаємо відступ вниз */
+    margin-top: 20px;
 }
 
-/* Шкала заповнюється по контуру */
+/* Заповнення по контуру */
 .progress-bar {
     position: absolute;
     bottom: 0;
@@ -77,7 +77,7 @@ body {
     transition: height 0.5s ease-out;
 }
 
-/* Мітки для прогрес-бара */
+/* Мітки шкали */
 .progress-labels {
     position: absolute;
     left: -50px;
@@ -92,12 +92,17 @@ body {
     color: black;
 }
 
-.progress-label {
-    position: relative;
-    transform: translateY(-50%);
+/* Виділяємо 0 */
+.progress-labels div:nth-last-child(1) {
+    color: #fff;
+    font-weight: bold;
+    background-color: #333;
+    padding: 3px 6px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
-/* Додав рисочки поруч із мітками */
+/* Додавання рисочок поруч із мітками */
 .progress-labels div {
     display: flex;
     align-items: center;
@@ -113,16 +118,17 @@ body {
     margin-left: 5px;
 }
 
-/* Блок з кнопками */
+/* Кнопки по центру шкали */
 .actions {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-left: 20px; /* Зсуваємо трохи вправо */
-    align-self: flex-start; /* Зафіксував положення праворуч від шкали */
+    margin-left: 20px;
+    justify-content: center;
+    height: 800px; /* Підганяємо по висоті шкали */
 }
 
-/* Кнопки */
+/* Стилі кнопок */
 .donate-button, .telegram-button {
     display: block;
     padding: 15px 20px;
@@ -155,7 +161,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Виправлений список нагород */
+/* Список винагород */
 #rewards-list {
     list-style: none;
     padding: 0;
@@ -166,25 +172,16 @@ body {
     text-align: center;
     margin-top: 15px;
     padding: 0;
-    text-shadow: 0px 0px 0px #333333, 1px 1px 0px rgba(0,0,0,0.15);
+    text-shadow: 0px 0px 0px #333333, 1px 1px 0px rgba(0, 0, 0, 0.15);
     color: #FFFFFF;
     list-style-type: none;
 }
 
-/* Виконані нагороди */
+/* Виконані винагороди */
 .received {
     color: gold !important;
     font-weight: bold;
     text-shadow: 0px 0px 10px gold;
     padding: 5px;
     border-radius: 5px;
-}
-
-/* 0% тепер яскравіший і контрастніший */
-.zero-label {
-    color: #fff;
-    font-weight: bold;
-    background-color: #333;
-    padding: 2px 5px;
-    border-radius: 3px;
 }
