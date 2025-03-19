@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let currentProgress = data.currentValue;
             let maxProgress = data.maxValue;
 
+            console.log("Поточний прогрес:", currentProgress);
+            console.log("Максимальний прогрес:", maxProgress);
+
+            if (isNaN(currentProgress) || isNaN(maxProgress) || maxProgress <= 0) {
+                console.error("Неправильні дані!", { currentProgress, maxProgress });
+                return;
+            }
+
             // Оновлення висоти шкали прогресу без округлення
             progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
 
