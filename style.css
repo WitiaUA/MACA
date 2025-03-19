@@ -92,17 +92,20 @@ body {
     color: black;
 }
 
-/* Виділяємо 0 ще яскравіше */
+
+/* Виділяємо 0 максимально контрастно */
 .progress-labels div:nth-last-child(1) {
-    color: #fff; /* Білий текст */
+    color: #ff0000; /* Яскраво-червоний текст */
     font-weight: bold;
     background-color: #000; /* Чорний фон */
     padding: 5px 8px;
     border-radius: 5px;
-    border: 2px solid gold; /* Золота рамка */
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.9); /* Яскраве золоте світіння */
-    font-size: 16px; /* Трохи більший розмір шрифту */
+    border: 2px solid #fff; /* Біла рамка */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.9); /* Яскраве біле світіння */
+    font-size: 18px; /* Трохи більший шрифт */
+    text-shadow: 2px 2px 5px black; /* Тінь, щоб текст не зливався */
 }
+
 
 
 /* Додавання рисочок поруч із мітками */
