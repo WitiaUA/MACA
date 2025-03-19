@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Оновлення висоти шкали прогресу
             const progressHeight = (currentProgress / maxProgress) * 100;
-            progressBar.style.height = `${progressHeight}%`;
+            if (progressBar) {
+                progressBar.style.height = `${progressHeight}%`;
+                console.log(`Шкала оновлена до ${progressHeight}%`);
+            } else {
+                console.error("Елемент progress-bar не знайдено!");
+            }
 
             // Очищення попередніх міток
             progressContainer.querySelectorAll(".progress-label").forEach(label => label.remove());
