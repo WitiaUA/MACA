@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const progressBar = document.querySelector(".progress-bar");
-    const progressLabels = document.querySelector(".progress-labels");
+    const progressContainer = document.querySelector(".progress-container");
     const rewardsList = document.getElementById("rewards-list");
 
     const labelValues = [
@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data.json")
         .then(response => response.json())
         .then(data => {
-            let currentProgress = data.currentValue;
-            let maxProgress = data.maxValue;
+            let currentProgress = parseInt(data.currentValue);
+            let maxProgress = parseInt(data.maxValue);
 
             console.log("Поточний прогрес:", currentProgress);
             console.log("Максимальний прогрес:", maxProgress);
@@ -22,11 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Оновлення висоти шкали прогресу без округлення
-            progressBar.style.height = `${(currentProgress / maxProgress) * 100}%`;
+            // Оновлення висоти шкали прогресу
+            const progressHeight = (currentProgress / maxProgress) * 100;
+            progressBar.style.height = `${progressHeight}%`;
 
             // Очищення попередніх міток
-            progressLabels.innerHTML = "";
+            progressContainer.querySelectorAll(".progress-label").forEach(label => label.remove());
 
             // Додавання міток всередині шкали
             labelValues.forEach(value => {
@@ -37,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 let position = (1 - value / maxProgress) * 100;
                 label.style.position = "absolute";
                 label.style.top = `${position}%`;
-                label.style.left = "0";
-                label.style.width = "100%";
-                label.style.textAlign = "center";
+                label.style.left = "5px";
+                label.style.width = "calc(100% - 10px)";
+                label.style.textAlign = "left";
                 label.style.color = "#000";
                 label.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
                 label.style.padding = "2px 0";
                 label.style.boxShadow = "0 0 3px rgba(0, 0, 0, 0.5)";
 
-                progressLabels.appendChild(label); // Відновлюємо додавання до progressLabels
+                progressContainer.appendChild(label);
             });
 
             // Оновлення списку винагород
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 rewardsList.appendChild(listItem);
             });
 
-            console.log("Мітки додано:", progressLabels.innerHTML);
+            console.log("Мітки додано:", progressContainer.innerHTML);
         })
         .catch(error => console.error("Помилка завантаження даних:", error));
 });
