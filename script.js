@@ -28,10 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let position = (1 - value / maxProgress) * 100;
                 label.style.top = `calc(${position}% - 7px)`; // Тонке вирівнювання
-                label.style.left = "20%"; // Мітки всередині шкали
+                label.style.left = "50%"; // По центру всередині шкали
+                label.style.transform = "translateX(-50%)"; // Центрування по горизонталі
                 label.style.position = "absolute";
+                label.style.color = "#000"; // Чорний текст для контрасту всередині
 
-                progressLabels.appendChild(label);
+                progressBar.appendChild(label); // Мітки тепер всередині самої шкали
             });
 
             // Оновлення списку винагород
