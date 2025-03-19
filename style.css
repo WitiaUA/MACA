@@ -1,25 +1,26 @@
-/* Основні стилі */
+/* Загальні стилі */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-image: url('https://raw.githubusercontent.com/WitiaUA/MACA/main/images(1).jpg');
-    background-repeat: repeat-y;
-    background-position: top center;
-    background-size: auto;
-    background-attachment: fixed;
-    height: 100vh;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 50px;
+    background-repeat: repeat-y; /* Фон буде повторюватися тільки по вертикалі */
+    background-position: top center; /* Центруємо фон по ширині і ставимо його зверху */
+    background-size: auto; /* Фон не буде змінюватися по розміру */
+    background-attachment: fixed; /* Фон залишається сталим при прокручуванні */
+    height: 100vh; /* Висота сторінки на всю висоту вікна */
+    text-align: center; /* Центруємо текст по горизонталі */
+    display: flex; /* Додаємо flex для центровання контенту */
+    flex-direction: column; /* Центруємо всі елементи вертикально */
+    justify-content: flex-start; /* Вирівнюємо всі елементи від верхнього краю */
+    align-items: center; /* Центруємо по горизонталі */
+    padding-top: 50px; /* Відступ зверху для заголовка */
 }
 
 /* Заголовок */
 .hear {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     color: white;
@@ -28,23 +29,28 @@ body {
     margin-top: 0;
 }
 
-/* Зображення */
-.hear img {
+/* Логотип */
+.hear img:first-of-type {
     display: block;
-    margin: 0 auto 20px auto;
+    margin-bottom: 10px;
 }
 
-/* Контейнер для шкали і кнопок */
+/* Зображення золота під прогресом */
+.hear img:nth-of-type(2) {
+    margin-top: 10px;
+}
+
+/* Контейнер для прогрес-бара та інших елементів */
 .container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Дозволяє елементам переноситися на новий рядок при малих екранах */
 }
 
-/* Прогрес-бар */
+/* Прогрес-бар тепер стає нижче */
 .progress-container {
     position: relative;
     width: 80px;
@@ -56,9 +62,10 @@ body {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    margin-top: 20px; /* Додаємо відступ вниз */
 }
 
-/* Заповнення шкали по контуру */
+/* Шкала заповнюється по контуру */
 .progress-bar {
     position: absolute;
     bottom: 0;
@@ -70,7 +77,7 @@ body {
     transition: height 0.5s ease-out;
 }
 
-/* Мітки */
+/* Мітки для прогрес-бара */
 .progress-labels {
     position: absolute;
     left: -50px;
@@ -80,6 +87,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+    background-color: white;
     font-size: 14px;
     color: black;
 }
@@ -89,16 +97,13 @@ body {
     transform: translateY(-50%);
 }
 
-/* 0% мітка */
-.zero-label {
-    color: #fff;
-    font-weight: bold;
-    background-color: #333;
-    padding: 2px 5px;
-    border-radius: 3px;
+/* Додав рисочки поруч із мітками */
+.progress-labels div {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
 }
 
-/* Рисочки біля міток */
 .progress-labels div::after {
     content: "";
     display: block;
@@ -113,6 +118,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-left: 20px; /* Зсуваємо трохи вправо */
+    align-self: flex-start; /* Зафіксував положення праворуч від шкали */
 }
 
 /* Кнопки */
@@ -127,7 +134,6 @@ body {
     border-radius: 5px;
     width: 200px;
     margin: 5px auto;
-    transition: 0.3s ease;
 }
 
 .donate-button {
@@ -138,15 +144,6 @@ body {
     background-color: #0088cc;
 }
 
-/* Анімація при наведенні на кнопки */
-.donate-button:hover {
-    background-color: #ffdf6b;
-}
-
-.telegram-button:hover {
-    background-color: #006699;
-}
-
 /* Список нагород */
 .rewards-container {
     margin-top: 30px;
@@ -154,23 +151,22 @@ body {
     color: white;
 }
 
-/* Заголовок винагород */
 .rewards-container h2 {
     margin-bottom: 10px;
 }
 
-/* Список нагород */
+/* Виправлений список нагород */
 #rewards-list {
     list-style: none;
     padding: 0;
     color: white;
 }
 
-/* Нагороди */
 #rewards-list li {
     text-align: center;
     margin-top: 15px;
     padding: 0;
+    text-shadow: 0px 0px 0px #333333, 1px 1px 0px rgba(0,0,0,0.15);
     color: #FFFFFF;
     list-style-type: none;
 }
@@ -182,4 +178,13 @@ body {
     text-shadow: 0px 0px 10px gold;
     padding: 5px;
     border-radius: 5px;
+}
+
+/* 0% тепер яскравіший і контрастніший */
+.zero-label {
+    color: #fff;
+    font-weight: bold;
+    background-color: #333;
+    padding: 2px 5px;
+    border-radius: 3px;
 }
