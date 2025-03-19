@@ -44,6 +44,14 @@ body {
     flex-wrap: wrap; /* Дозволяє елементам переноситися на новий рядок при малих екранах */
 }
 
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: gold; /* Колір заповнення */
+    height: 0; /* Початкова висота */
+}
+
 /* Оновлений стиль для прогрес-бара */
 .progress-container {
     position: relative;
